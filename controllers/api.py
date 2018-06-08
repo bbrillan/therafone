@@ -53,6 +53,6 @@ def toggle_public():
     memo = db(db.checklist.id == request.vars.id).select().first()
     if(memo.is_public==True):
         memo.update_record(is_public=False)
-    elif(cl.is_public==False):
+    elif(memo.is_public==False):
         memo.update_record(is_public=True)
     return "ok"
