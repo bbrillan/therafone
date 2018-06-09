@@ -59,3 +59,10 @@ def call():
     return service()
 
 
+def play():
+    """
+    need to open the play page,
+    can be rendered from views/default/play
+    """
+    return auth.wiki()
+

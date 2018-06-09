@@ -1,18 +1,47 @@
 {{extend 'layout.html'}}
 
 {{block head}}
-<script src="{{=URL('static', 'js/vue.js')}}"></script>
+        <script src="{{=URL('static', 'js/vue.js')}}"></script>
+        <script src="{{=URL('static', 'js/jquery.js')}}"></script>
 
-
+<script>
+    var bpm = 70;
+    var duration = 184;
+</script>
 
 {{end}}
 
 
 <div class="main content">
     <div id="vue-div" class="display:none">
-        <h4>Test Hello</h4>
+
+
+        <!-- Container for the activity window style="text-align: center" -->
+
+
+        <div class="game_container">
+
+
+            <button v-on:click="bounce(70, 15), show_balls=true" class="center padding rounded">Play</button>   <!-- Eventually needs to play music too -->
+            <button v-on:click="stop_bounce()" class=""
+            <div class="dot"></div>
+
+
+
+
+<!--
+            <button v-on:click="bounce(bpm, duration)"> Button
+                    <span class="dot"></span>
+            </button>
+-->
+        </div>
+
 
 
 
     </div>
 </div>
+
+<script src="{{=URL('static', 'js/default_index.js')}}"></script>
+
+

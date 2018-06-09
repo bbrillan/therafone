@@ -1,5 +1,8 @@
 # Fall 2016 Assignment 3 Sample Solution used as reference
 
+
+# ############## start 'index' page #######################
+
 # Grab list of memos
 def get_memos():
     memos = []
@@ -56,3 +59,13 @@ def toggle_public():
     elif(memo.is_public==False):
         memo.update_record(is_public=True)
     return "ok"
+
+# ################### End index Page #########################
+
+
+# ################# Start 'play' Page #######################
+
+
+
+
+# ################ End 'play' Page ####################
