@@ -34,19 +34,48 @@ div.memo {
   }
 }
 
+div.gbutton {
+  padding: 2px;
+  text-align: center;
+  background-color: #6C8CD5;
+  color: black;
+  font-family: Impact, Charcoal, sans-serif;
+}
+
+
+
 div.game_container {
   border: 1px solid black;
-  height: 400px;
-  width: 600px;
-  margin-right: auto;
-  margin-left: auto;
   position: relative;
+  div.word_space{
+    position: relative;
+    text-align: center;
 
-  div.dot {
-    background-color: #2aabd2;
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
   }
+  div.dot_space {
+    border-bottom: black;
+    position: relative;
+  }
+  div.floor_space {
+    position:relative;
+  }
+}
+
+.dot {
+  position:relative;
+  transition: bounce-in 2s linear;
+}
+
+.dot.transitioning {
+  transition: bounce-in 2s;
+  transition-timing-function: linear;
+}
+
+
+
+@keyframes bounce-in {
+  0% {transform: translate(298px, 0px);}
+  50% {transform: translate(298px, 145px);}
+  100% {transform: translate(298px, 0px);}
 }
 

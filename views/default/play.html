@@ -21,27 +21,38 @@
 
         <div class="game_container">
 
-
-            <button v-on:click="bounce(70, 15), show_balls=true" class="center padding rounded">Play</button>   <!-- Eventually needs to play music too -->
-            <button v-on:click="stop_bounce()" class=""
-            <div class="dot"></div>
-
-
-
-
 <!--
-            <button v-on:click="bounce(bpm, duration)"> Button
-                    <span class="dot"></span>
-            </button>
--->
+            <button v-on:click="bounce(70, 15), show_balls=true" class="center rounded">Play</button>   <!-- Eventually needs to play music too -->
+      <!--      <button v-on:click="stop_bounce()" class="center rounded">Pause</button> -->
+<!--            <div class="dot_space">
+                <div class="dot"></div>
+            </div>
+
         </div>
 
+-->
+            <div class="word_space">
+                <p class="center bold"> Watch me bounce bitch </p>
+            </div>
 
+
+            <div class="dot_space">
+                <div class="center">
+                    <button class="gbutton" id="play" v-on:click="try_bounce()" >PLAYYYYY</button>
+                </div>
+                <div id="dot" class="dot"></div>
+
+               <!--  <div v-if="!show"><div class="dot"></div></div> -->
+            </div>
+
+            <div class="floor_space">
+
+            </div>
+
+        </div>
 
 
     </div>
 </div>
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
-
-

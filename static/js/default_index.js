@@ -156,8 +156,13 @@ var app = function() {
         var num_beats = bps * duration;         // number of beats in the song
         console.log(num_beats);
         self.vue.show_balls = true;
-
         var btime = bps/2;                      //the time the ball will be traveling up or down.
+
+        self.vue.show = false;
+
+
+
+
 
             for (var i = 0; i <= num_beats; i++) {   //for every beat
                 console.log('in for loop1');
@@ -168,7 +173,6 @@ var app = function() {
                     if (j < btime) {
                         $(".dot").slideDown(bps * 1000);
                         console.log('going down');
-
                     } else {
                         $(".dot").slideUp(bps * 1000);
                         console.log('going up');
@@ -176,7 +180,30 @@ var app = function() {
                 }
                 duration -=1;
                 console.log(duration);
-            }
+            } //end for num_beats
+
+    };
+
+
+
+    self.try_bounce = function () {
+        self.vue.play_button=true;
+        console.log('ok');
+
+        var play = document.getElementById('play');
+        var dot = document.getElementById('dot');
+
+        //'pressing play makes the ball bounce'//
+        play.addEventListener('click', function(e){
+            e.preventDefault;
+
+            dot.classList.remove('animated');
+
+            void dot.offsetWidth;
+
+            dot.classList.add('animated');
+        }, false);
+
 
     };
 
@@ -204,13 +231,15 @@ var app = function() {
 
             //for activity page //
 
+            play_button: false,
+
             speed: 0.0,
             duration: 0.0,
-
             show_balls: false, // boolean to display all the trailing balls
             stop_ball: false,
+            show: true,
 
-
+            dot: document.getElementById('dot'),
 
             //end activity page //
         },
@@ -233,6 +262,9 @@ var app = function() {
             bounce: self.bounce,
             stop_bounce: self.stop_bounce,
 
+            try_bounce: self.try_bounce,
+
+
 
             //end activity page //
         },
@@ -251,6 +283,19 @@ var APP = null;
 // for instance, self.x above would be accessible as APP.x
 jQuery(function(){APP = app();});
 
+
+
+// $dot.add("click", function() {
+
+      //  })
+
+        //        self.vue.dot.classList.add('animated');
+
+
+
+      /*  $('.dot:eq(1)').on('click', function () {
+            self.vue.dot.addClass('dot');
+        */
 
 
     /*
