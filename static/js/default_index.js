@@ -161,9 +161,6 @@ var app = function() {
         self.vue.show = false;
 
 
-
-
-
             for (var i = 0; i <= num_beats; i++) {   //for every beat
                 console.log('in for loop1');
                 var hit = bps * i;                    //the time stamp for every beat
@@ -185,24 +182,73 @@ var app = function() {
     };
 
 
-
-    self.try_bounce = function () {
-        self.vue.play_button=true;
-        console.log('ok');
-
+    self.play = function() {
+        console.log('dipshit');
         var play = document.getElementById('play');
         var dot = document.getElementById('dot');
 
-        //'pressing play makes the ball bounce'//
-        play.addEventListener('click', function(e){
-            e.preventDefault;
-
+        play.addEventListener('click', function(a) {
+            console.log('dipshit2');
+            a.preventDefault;
+            self.vue.show=false;
+            console.log(dot.classList);
             dot.classList.remove('animated');
-
             void dot.offsetWidth;
-
             dot.classList.add('animated');
         }, false);
+
+    };
+
+
+    self.start = function () {
+        self.vue.show=true;
+        self.vue.more_buttons=false;
+        console.log('ok');
+
+    //    self.vue.plays.addEventListener('click', self.play, true);
+
+        var play = document.getElementById('play');
+        var pause = document.getElementById('pause');
+        var restart = document.getElementById('restart');
+        var dot = document.getElementById('dot');
+
+
+        var animation = document.getElementsByClassName('animated')[0];
+        //'pressing play makes the ball bounce'//
+
+
+        play.addEventListener('click', function(a) {
+            a.preventDefault();
+            self.vue.more_buttons = true;
+            animation.classList.add('animated');
+            animation.style.animationPlayState = "running";
+        }, false);
+
+
+        pause.addEventListener('click', function(a) {
+            a.preventDefault();
+            self.vue.more_buttons = true;
+            console.log('fuk, u');
+            animation.style.animationPlayState = "paused";
+        }, false);
+
+
+        restart.addEventListener('click', function(a) {
+            a.preventDefault();
+            self.vue.more_buttons = false;
+            dot.classList.remove('animated');
+            void dot.offsetWidth;
+            animation.style.animationPlayState = "paused";
+        }, false);
+/*
+        pause.addEventListener('click', function (e){
+        //    e.preventDefault;
+        //    self.vue.show = true;
+        //    dot.classList.remove('animated');
+        //    void dot.offsetWidth;
+            dot.classList.add('paused');
+        }, false);
+*/
 
 
     };
@@ -238,8 +284,13 @@ var app = function() {
             show_balls: false, // boolean to display all the trailing balls
             stop_ball: false,
             show: true,
+            more_buttons: true,
 
+            plays: document.getElementById('play'),
+            pause: document.getElementById('pause'),
+            restart: document.getElementById('restart'),
             dot: document.getElementById('dot'),
+
 
             //end activity page //
         },
@@ -262,8 +313,9 @@ var app = function() {
             bounce: self.bounce,
             stop_bounce: self.stop_bounce,
 
-            try_bounce: self.try_bounce,
+            start: self.start,
 
+            play: self.play,
 
 
             //end activity page //
@@ -271,7 +323,7 @@ var app = function() {
 
     });
 
-    //self.bounce();
+    self.start();
     self.get_memos();
     $("#vue-div").show();
     return self;

@@ -117,18 +117,28 @@ div.game_container div.floor_space {
 
 
 .animated {
-  animation: bounce-in 2s infinite;
+  animation: bounce-in 2s;
+  animation-iteration-count: infinite;
   animation-timing-function: linear;
+  animation-play-state: paused;
 }
 
 
-.transition {
-  -webkit-transition: all 2s linear;
-  -moz-transition: all 2s linear;
-  -ms-transition: all 2s linear;
-  -o-transition: all 2s linear;
-  transition: all 2s linear;
+@keyframes bounce-in {
+  0% {transform: translate(0px, 0px);}
+  50% {transform: translate(0px, 145px);}
+  100% {transform: translate(0px, 0px);}
 }
+
+/* end activity page*/
+
+
+
+/*
+
+
+
+
 
 @keyframes bounce-in {
   0% {transform: translate(0px, 0px);}
@@ -161,11 +171,7 @@ div.game_container div.floor_space {
 }
 
 
-/* end activity page*/
 
-
-
-/*
 
  from {
     top: 75px;

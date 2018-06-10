@@ -37,10 +37,17 @@
 
 
             <div class="dot_space">
-                <div class="center">
-                    <button class="gbutton" id="play" v-on:click="try_bounce()" >PLAYYYYY</button>
+
+
+
+
+                <div v-if="show" class="center">
+                    <button class="gbutton" id="play">PLAYYYYY</button>
+                    <button class="gbutton" id="pause" >PAUSE ME </button>
+                    <button class="gbutton" id="restart">PLZ RESTART</button>
                 </div>
-                <div id="dot" class="dot"></div>
+
+                <div id="dot" class="dot animated"></div>
 
                <!--  <div v-if="!show"><div class="dot"></div></div> -->
             </div>
