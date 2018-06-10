@@ -228,7 +228,6 @@ var app = function() {
         pause.addEventListener('click', function(a) {
             a.preventDefault();
             self.vue.more_buttons = true;
-            console.log('fuk, u');
             animation.style.animationPlayState = "paused";
         }, false);
 
@@ -240,15 +239,6 @@ var app = function() {
             void dot.offsetWidth;
             animation.style.animationPlayState = "paused";
         }, false);
-/*
-        pause.addEventListener('click', function (e){
-        //    e.preventDefault;
-        //    self.vue.show = true;
-        //    dot.classList.remove('animated');
-        //    void dot.offsetWidth;
-            dot.classList.add('paused');
-        }, false);
-*/
 
 
     };
