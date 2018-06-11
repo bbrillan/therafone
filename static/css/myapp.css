@@ -66,9 +66,9 @@ div.memo div.button_list a.btn {
 
 /* activity page */
 div.game_container {
-  border: 1px solid black;
-  text-align: center;
-
+    border: 1px solid black;
+    text-align: center;
+}
 
 
 /* misc classes */
