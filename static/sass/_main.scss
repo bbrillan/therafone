@@ -33,3 +33,20 @@ div.memo {
     }
   }
 }
+
+div.game_container {
+  border: 1px solid black;
+  height: 400px;
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+
+  div.dot {
+    background-color: #2aabd2;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+  }
+}
+
