@@ -74,32 +74,249 @@ div.game_container {
 =======
 
 
+
+/* misc classes */
+
+.bold {
+  font-weight: bold;
+}
+
+
+
+/* Buttons */
+.gbutton {
+  background: black;
+  color: white;
+  text-align: center;
+  border: 0;
+  padding: 5px 15px;
+  border-radius: 4px;
+  outline: 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
 /* activity page */
 div.game_container {
   border: 1px solid black;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 400px;
-  position: relative;
-
+  height: 400px;
+  width: 600px;
+    margin: 0 auto;
 }
 
-div.game_container div.dot {
-  margin-right: auto;
-  margin-top: auto;
-  position: fixed;
+div.game_container div.word_space {
+  background-color: #f5f5f5;
+  padding: 50px 0;
+  text-align: center;
+  color: #0e0e0e;
+  height:100px;
+  width: 599px;
+  border-right: 1px solid black;
+}
+
+
+div.game_container div.dot_space {
+  background-color: #f5f5f5;
+  height: 200px;
+  width: 599px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    position: relative;
+}
+
+div.game_container div.floor_space {
+  height: 98px;
+  width: 598px;
+  background-color: #607392;
+}
+
+
+/* Bouncing ball stuff */
+.dot {
+  margin-left: 295px;
+  text-align: center;
+  background-color: #2aabd2;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  position: relative;
+    -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+
+.animated {
+  animation: bounce-in ;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+    -webkit-animation: bounce-in;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-play-state: paused;
+}
+
+
+@keyframes bounce-in {
+  0% {transform: translate(0px, 0px);}
+  50% {transform: translate(0px, 145px);}
+  100% {transform: translate(0px, 0px);}
+}
+
+@-webkit-keyframes bounce-in {
+  0% {-webkit-transform: translate(0px, 0px);}
+  50% {-webkit-transform: translate(0px, 145px);}
+  100% {-webkit-transform: translate(0px, 0px);}
 }
 
 /* end activity page*/
 
 
 
+/*
 
+
+
+
+
+@keyframes bounce-in {
+  0% {transform: translate(0px, 0px);}
+  50% {transform: translate(0px, 145px);}
+  100% {transform: translate(0px, 0px);}
+}
+
+@-webkit-keyframes bounce-in {
+  0% {-webkit-transform: translate(0px, 0px);}
+  50% {-webkit-transform: translate(0px, 145px);}
+  100% {-webkit-transform: translate(0px, 0px);}
+}
+
+@-moz-keyframes bounce-in {
+  0% {-moz-transform: translate(0px, 0px);}
+  50% {-moz-transform: translate(0px, 145px);}
+  100% {-moz-transform: translate(0px, 0px);}
+}
+
+@-ms-keyframes bounce-in {
+  0% {-ms-transform: translate(0px, 0px);}
+  50% {-ms-transform: translate(0px, 145px);}
+  100% {-ms-transform: translate(0px, 0px);}
+}
+
+@-o-keyframes bounce-in {
+  0% {-o-transform: translate(0px, 0px);}
+  50% {-o-transform: translate(0px, 145px);}
+  100% {-o-transform: translate(0px, 0px);}
+}
+
+
+
+
+ from {
+    top: 75px;
+  }
+  to {
+    top: 175px;
+  }
+
+
+.bounce-enter-active {
+  animation: bounce-in;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+
+.bounce-leave-active {
+  animation: bounce-in;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+  transition-property: reverse;
+}
+*/
+
+/*  0% {transform: translate3d(0, 0px, 0);}
+  10% {transform: translate3d(0, 10px, 0);}
+  25% {transform: translate3d(0, 25px, 0);}
+  35% {transform: translate3d(0, 35px, 0);}
+  50% {transform: translate3d(0, 50px, 0);}
+  60% {transform: translate3d(0, 60px, 0);}
+  75% {transform: translate3d(0, 75px, 0);}
+  85% {transform: translate3d(0, 85px, 0);}
+  100% {transform: translate3d(0, 100px, 0);}
+
+
+
+  0% {@include ddot(0px);}
+  10%, 35%, 60%, 85%, 15%, 40%, 92%, 5%, 40% {@include ddot();}
+  25% {@include ddot(25px);}
+  50% {@include ddot(50px);}
+  75% {@include ddot(75px);}
+  100% {@include ddot(100px);}
+
+   */
+
+
+
+
+
+
+
+
+/*
+.bounce-enter-active {
+  animation: bounce-in 1s ;
+  animation-timing-function: linear;
+}
+
+.bounce-leave-active {
+  animation: bounce-in 1s;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+}
+*/
 
 
 
 /* this gets the url for the ball */
 /*
+
+
+.bounce-enter-active {
+  animation: bounce-in;
+  transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-timing-function: linear;
+}
+
+.bounce-leave-active {
+  animation: bounce-in;
+  transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -webkit-transition-property: reverse;
+  transition-property: reverse;
+  transition-timing-function: linear;
+
+}
+
+@mixin ddot($yaxis: 0) {
+  transform: translate3d(0, $yaxis, 0);
+}
+
+
+
+0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+
 body {
   font-family: 'Bitter', serif;
   width: 100vw;
