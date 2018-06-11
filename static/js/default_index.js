@@ -184,7 +184,7 @@ var app = function() {
 
     self.play = function() {
             var animation = document.getElementsByClassName('animated')[0];
-            $(".animated").animate('bounce-in', '2s', 'infinite');
+        //    $(".animated").animate('bounce-in', '2s', 'infinite');
 
           //  animateDuration(2);
 
@@ -222,7 +222,6 @@ var app = function() {
 
         play.addEventListener('click', function(a) {
             a.preventDefault();
-            $(".dot.animated").css({"animation-duration": "3"});
             self.vue.more_buttons = true;
             animation.classList.add('animated');
             animation.style.animationPlayState = "running";

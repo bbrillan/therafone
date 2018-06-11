@@ -42,6 +42,8 @@ div.memo div.button_list a.btn {
   padding: 10px;
 }
 
+
+
 /* misc classes */
 
 .bold {
@@ -67,13 +69,9 @@ div.memo div.button_list a.btn {
 /* activity page */
 div.game_container {
   border: 1px solid black;
-  text-align: center;
   height: 400px;
   width: 600px;
-  margin-right: auto;
-  margin-left: auto;
-  position: relative;
-
+    margin: 0 auto;
 }
 
 div.game_container div.word_space {
@@ -91,9 +89,9 @@ div.game_container div.dot_space {
   background-color: #f5f5f5;
   height: 200px;
   width: 599px;
-  position: relative;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
+    position: relative;
 }
 
 div.game_container div.floor_space {
@@ -112,16 +110,22 @@ div.game_container div.floor_space {
   width: 25px;
   border-radius: 50%;
   position: relative;
+    -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
 }
 
 
 .animated {
   animation: bounce-in ;
-  animation-duration: inherit;
-  animation-iteration-count: inherit;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-play-state: paused;
+    -webkit-animation: bounce-in;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-play-state: paused;
 }
 
 
@@ -129,6 +133,12 @@ div.game_container div.floor_space {
   0% {transform: translate(0px, 0px);}
   50% {transform: translate(0px, 145px);}
   100% {transform: translate(0px, 0px);}
+}
+
+@-webkit-keyframes bounce-in {
+  0% {-webkit-transform: translate(0px, 0px);}
+  50% {-webkit-transform: translate(0px, 145px);}
+  100% {-webkit-transform: translate(0px, 0px);}
 }
 
 /* end activity page*/
