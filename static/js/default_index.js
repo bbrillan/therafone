@@ -156,8 +156,10 @@ var app = function() {
         var num_beats = bps * duration;         // number of beats in the song
         console.log(num_beats);
         self.vue.show_balls = true;
-
         var btime = bps/2;                      //the time the ball will be traveling up or down.
+
+        self.vue.show = false;
+
 
             for (var i = 0; i <= num_beats; i++) {   //for every beat
                 console.log('in for loop1');
@@ -168,7 +170,6 @@ var app = function() {
                     if (j < btime) {
                         $(".dot").slideDown(bps * 1000);
                         console.log('going down');
-
                     } else {
                         $(".dot").slideUp(bps * 1000);
                         console.log('going up');
@@ -176,7 +177,69 @@ var app = function() {
                 }
                 duration -=1;
                 console.log(duration);
-            }
+            } //end for num_beats
+
+    };
+
+
+    self.play = function() {
+        console.log('dipshit');
+        var play = document.getElementById('play');
+        var dot = document.getElementById('dot');
+
+        play.addEventListener('click', function(a) {
+            console.log('dipshit2');
+            a.preventDefault;
+            self.vue.show=false;
+            console.log(dot.classList);
+            dot.classList.remove('animated');
+            void dot.offsetWidth;
+            dot.classList.add('animated');
+        }, false);
+
+    };
+
+
+    self.start = function () {
+        self.vue.show=true;
+        self.vue.more_buttons=false;
+        console.log('ok');
+
+    //    self.vue.plays.addEventListener('click', self.play, true);
+
+        var play = document.getElementById('play');
+        var pause = document.getElementById('pause');
+        var restart = document.getElementById('restart');
+        var dot = document.getElementById('dot');
+
+
+        var animation = document.getElementsByClassName('animated')[0];
+        //'pressing play makes the ball bounce'//
+
+
+        play.addEventListener('click', function(a) {
+            a.preventDefault();
+            self.vue.more_buttons = true;
+            animation.classList.add('animated');
+            animation.style.animationPlayState = "running";
+        }, false);
+
+
+        pause.addEventListener('click', function(a) {
+            a.preventDefault();
+            self.vue.more_buttons = true;
+            animation.style.animationPlayState = "paused";
+        }, false);
+
+
+        restart.addEventListener('click', function(a) {
+            a.preventDefault();
+            self.vue.more_buttons = false;
+            dot.classList.remove('animated');
+            void dot.offsetWidth;
+            animation.style.animationPlayState = "paused";
+        }, false);
+
 
     };
 
@@ -206,12 +269,19 @@ var app = function() {
 
             //for activity page //
 
+            play_button: false,
+
             speed: 0.0,
             duration: 0.0,
-
             show_balls: false, // boolean to display all the trailing balls
             stop_ball: false,
+            show: true,
+            more_buttons: true,
 
+            plays: document.getElementById('play'),
+            pause: document.getElementById('pause'),
+            restart: document.getElementById('restart'),
+            dot: document.getElementById('dot'),
 
 
             //end activity page //
@@ -235,13 +305,17 @@ var app = function() {
             bounce: self.bounce,
             stop_bounce: self.stop_bounce,
 
+            start: self.start,
+
+            play: self.play,
+
 
             //end activity page //
         },
 
     });
 
-    //self.bounce();
+    self.start();
     self.get_memos();
     $("#vue-div").show();
     return self;
@@ -253,6 +327,19 @@ var APP = null;
 // for instance, self.x above would be accessible as APP.x
 jQuery(function(){APP = app();});
 
+
+
+// $dot.add("click", function() {
+
+      //  })
+
+        //        self.vue.dot.classList.add('animated');
+
+
+
+      /*  $('.dot:eq(1)').on('click', function () {
+            self.vue.dot.addClass('dot');
+        */
 
 
     /*
