@@ -183,20 +183,23 @@ var app = function() {
 
 
     self.play = function() {
-        console.log('dipshit');
-        var play = document.getElementById('play');
-        var dot = document.getElementById('dot');
+            var animation = document.getElementsByClassName('animated')[0];
+            $(".animated").animate('bounce-in', '2s', 'infinite');
 
-        play.addEventListener('click', function(a) {
-            console.log('dipshit2');
-            a.preventDefault;
-            self.vue.show=false;
-            console.log(dot.classList);
-            dot.classList.remove('animated');
-            void dot.offsetWidth;
-            dot.classList.add('animated');
-        }, false);
+          //  animateDuration(2);
 
+
+   //             animationDuration: 1,
+    //            animationIterationCount: 3
+     //       }, "slow");
+
+            console.log('here?');
+
+         //   animation.css('animation-duration', 3);
+            self.vue.more_buttons = true;
+            console.log($(".animated"));
+            animation.classList.add('animated');
+            animation.style.animationPlayState = "running";
     };
 
 
@@ -219,6 +222,7 @@ var app = function() {
 
         play.addEventListener('click', function(a) {
             a.preventDefault();
+            $(".dot.animated").css({"animation-duration": "3"});
             self.vue.more_buttons = true;
             animation.classList.add('animated');
             animation.style.animationPlayState = "running";
@@ -281,7 +285,7 @@ var app = function() {
             restart: document.getElementById('restart'),
             dot: document.getElementById('dot'),
 
-
+             animation: document.getElementsByClassName('animated')[0],
             //end activity page //
         },
         methods: {

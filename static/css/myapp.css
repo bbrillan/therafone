@@ -117,8 +117,9 @@ div.game_container div.floor_space {
 
 
 .animated {
-  animation: bounce-in 2s;
-  animation-iteration-count: infinite;
+  animation: bounce-in ;
+  animation-duration: inherit;
+  animation-iteration-count: inherit;
   animation-timing-function: linear;
   animation-play-state: paused;
 }
