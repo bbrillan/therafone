@@ -83,7 +83,7 @@
                                         <a class="btn rounded red" v-on:click="button_delete(memo.id)">
                                             <i class="fa fa-trash fa-lg"></i>
                                         </a>
-                                        <a class="btn rounded red">
+                                        <a class="btn rounded red" v-on:click="toggle_public(memo.id)">
                                             <i class="fa fa-users" v-if="memo.is_public"></i>
                                             <i class="fa fa-user" v-if="!memo.is_public"></i>
                                         </a>
