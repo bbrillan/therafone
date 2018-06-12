@@ -81,7 +81,7 @@ var app = function() {
                 $.web2py.enableElement($("#button_save_edit"));
                 self.vue.is_being_edited = false;
             });
-    },
+    };
 
     //Delete Button
     self.button_delete = function(memo_id) {
@@ -114,6 +114,7 @@ var app = function() {
     };
 
 
+<<<<<<< HEAD
     //******* Any functions for the activity page ***** //
 
     //helper function for bounce()
@@ -228,6 +229,8 @@ var app = function() {
 
 
     //**************** End game functions **************//
+=======
+>>>>>>> 9e867e470b7b9d9249e422a08c1b99b18b0aa8ff
 
 
     // Complete as needed.
@@ -245,24 +248,6 @@ var app = function() {
             edit_content: null,
             edit_id: 0,
 
-            //for activity page //
-
-            play_button: false,
-
-            speed: 0.0,
-            duration: 0.0,
-            show_balls: false, // boolean to display all the trailing balls
-            stop_ball: false,
-            show: true,
-            more_buttons: true,
-
-            plays: document.getElementById('play'),
-            pause: document.getElementById('pause'),
-            restart: document.getElementById('restart'),
-            dot: document.getElementById('dot'),
-
-             animation: document.getElementsByClassName('animated')[0],
-            //end activity page //
         },
         methods: {
             get_memos_url: self.get_memos_url,
@@ -276,24 +261,10 @@ var app = function() {
             button_delete: self.button_delete,
             button_toggle_public: self.button_toggle_public,
 
-            //for activity page //
-            up: self.up,
-            down:self.down,     //not needed? they are just helped functions ...
-
-            bounce: self.bounce,
-            stop_bounce: self.stop_bounce,
-
-            start: self.start,
-
-            play: self.play,
-
-
-            //end activity page //
         },
 
     });
 
-    self.start();
     self.get_memos();
     $("#vue-div").show();
     return self;
@@ -303,5 +274,9 @@ var APP = null;
 
 // This will make everything accessible from the js console;
 // for instance, self.x above would be accessible as APP.x
+<<<<<<< HEAD
 jQuery(function(){APP = app();});
 
+=======
+jQuery(function(){APP = app();});
+>>>>>>> 9e867e470b7b9d9249e422a08c1b99b18b0aa8ff
