@@ -89,7 +89,7 @@ var app = function() {
         // Submits the track info.
         // This is the last step of the track insertion process.
         for(var i = 0; i<self.vue.tracks.length; i++){
-            if(track_id==self.vue.tracks[i].track_id){
+            if(track_id===self.vue.tracks[i].track_id){
                  $.post(add_user_track_url,
                     {
                         tracklength: self.vue.form_tracklength,
