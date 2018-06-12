@@ -64,5 +64,11 @@ def play():
     need to open the play page,
     can be rendered from views/default/play
     """
-    return auth.wiki()
+    return dict(message=T('Pick your song!'))
 
+
+def music():
+    """
+    allows for the music page to be called
+    """
+    return dict(message=T('Choose the songs you like and add them to your library'))
