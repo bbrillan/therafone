@@ -28,5 +28,35 @@ db.checklist.id.writable = db.checklist.id.readable = False
 db.checklist.is_public.writable = False
 db.checklist.is_public.readable = False
 
+
+# tables for music player
+db.define_table('track',
+                Field('tracklength'),
+                Field('bpm'),
+                Field('title'),
+                Field('num_plays', 'integer'),
+                Field('created_by', default=get_user_email()),
+                Field('created_on', default=datetime.datetime.utcnow()),
+                )
+
+db.define_table('track_data',
+                Field('track_id', 'reference track'),
+                Field('original_filename'),
+                Field('data_blob', 'blob'),
+                Field('mime_type'),
+                )
+
+db.define_table('users_track',
+                Field('tracklength'),
+                Field('bpm'),
+                Field('title'),
+                Field('liked_by'),
+                Field('num_plays', 'integer'),
+                Field('created_by', default=get_user_email()),
+                Field('created_on', default=datetime.datetime.utcnow()),
+                )
+
+
+
 # after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
