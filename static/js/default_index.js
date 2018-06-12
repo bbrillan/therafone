@@ -129,19 +129,6 @@ var app = function() {
         num.slideDown(1000);
         console.log(num);
 
-  /*
-        for (i=0; i < 400; i--){
-            $(".dot").postion += 1;
-        }
-*/
-
-
-     //   if (self.vue.duration >0) {
-     //       self.vue.pos -= 1;
-     //   }
-     //   else {
-      //      self.vue.pos = position;
-      //  }
     };
 
     self.stop_bounce = function(duration) {
@@ -184,18 +171,8 @@ var app = function() {
 
     self.play = function() {
             var animation = document.getElementsByClassName('animated')[0];
-        //    $(".animated").animate('bounce-in', '2s', 'infinite');
-
-          //  animateDuration(2);
-
-
-   //             animationDuration: 1,
-    //            animationIterationCount: 3
-     //       }, "slow");
 
             console.log('here?');
-
-         //   animation.css('animation-duration', 3);
             self.vue.more_buttons = true;
             console.log($(".animated"));
             animation.classList.add('animated');
