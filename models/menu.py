@@ -51,7 +51,7 @@ def _():
     response.menu += [
         (T('My Sites'), False, URL('admin', 'default', 'site')),
         (T('Play'), False, URL('default', 'play')),
-        (T('Music Library'), False, URL('default', 'index')),
+        (T('Music Library'), False, URL('default', 'music')),
         (T('Sample Menu 1'), False, '#', [
             (T('Entry1'), False, URL('default', 'entry1')),
             (T('Entry2'), False, URL('default', 'entry2')),
