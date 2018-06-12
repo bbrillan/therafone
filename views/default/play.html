@@ -17,8 +17,6 @@
 
 
         <!-- Container for the activity window style="text-align: center" -->
-
-
         <div class="game_container">
 
 <!--
@@ -42,12 +40,13 @@
 
 
                 <div v-if="show" class="center">
+                    <button class="gbutton" v-on:click="play()">Test</button>
                     <button class="gbutton" id="play">PLAYYYYY</button>
                     <button class="gbutton" id="pause" >PAUSE ME </button>
                     <button class="gbutton" id="restart">PLZ RESTART</button>
                 </div>
 
-                <div id="dot" class="dot animated"></div>
+                <div id="dot" class="dot"></div>
 
             </div>
 

@@ -1,5 +1,5 @@
-timestamp: 2018-04-17T14:00:38.739000
-CREATE TABLE "web2py_session_start"(
+timestamp: 2018-06-11T15:23:08.117000
+CREATE TABLE "web2py_session_therafone"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "locked" CHAR(1),
     "client_ip" CHAR(64),
@@ -9,7 +9,7 @@ CREATE TABLE "web2py_session_start"(
     "session_data" BLOB
 );
 success!
-timestamp: 2018-04-17T14:00:39.839000
+timestamp: 2018-06-11T15:23:08.417000
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -21,21 +21,21 @@ CREATE TABLE "auth_user"(
     "registration_id" CHAR(512)
 );
 success!
-timestamp: 2018-04-17T14:00:40.073000
+timestamp: 2018-06-11T15:23:08.653000
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
-timestamp: 2018-04-17T14:00:40.315000
+timestamp: 2018-06-11T15:23:08.977000
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
 );
 success!
-timestamp: 2018-04-17T14:00:40.590000
+timestamp: 2018-06-11T15:23:09.449000
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
@@ -44,7 +44,7 @@ CREATE TABLE "auth_permission"(
     "record_id" INTEGER
 );
 success!
-timestamp: 2018-04-17T14:00:40.882000
+timestamp: 2018-06-11T15:23:09.704000
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -54,7 +54,7 @@ CREATE TABLE "auth_event"(
     "description" TEXT
 );
 success!
-timestamp: 2018-04-17T14:00:41.070000
+timestamp: 2018-06-11T15:23:09.880000
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -64,36 +64,17 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
-timestamp: 2018-04-17T14:03:53.439000
+timestamp: 2018-06-11T15:23:10.056000
 CREATE TABLE "checklist"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_email" CHAR(512),
     "title" CHAR(512),
     "memo" TEXT,
-    "updated_on" TIMESTAMP
+    "updated_on" TIMESTAMP,
+    "is_public" CHAR(1)
 );
 success!
-timestamp: 2018-04-24T18:20:18.564000
-ALTER TABLE "checklist" ADD "is_public" CHAR(1);
-success!
-<<<<<<< HEAD
-timestamp: 2018-06-07T15:12:20.225000
-=======
-timestamp: 2018-06-07T21:28:59.108699
->>>>>>> e3bd5ba5a90b88f7bd3e5ae4eed19f5b99686d9a
-CREATE TABLE "web2py_session_therafone"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "locked" CHAR(1),
-    "client_ip" CHAR(64),
-    "created_datetime" TIMESTAMP,
-    "modified_datetime" TIMESTAMP,
-    "unique_key" CHAR(64),
-    "session_data" BLOB
-);
-success!
-<<<<<<< HEAD
-=======
-timestamp: 2018-06-07T22:05:10.137769
+timestamp: 2018-06-11T15:23:10.360000
 CREATE TABLE "wiki_page"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "slug" CHAR(512),
@@ -112,7 +93,7 @@ CREATE TABLE "wiki_page"(
     "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
 );
 success!
-timestamp: 2018-06-07T22:05:10.154130
+timestamp: 2018-06-11T15:23:10.572000
 CREATE TABLE "wiki_tag"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "name" CHAR(512),
@@ -124,52 +105,7 @@ CREATE TABLE "wiki_tag"(
     "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
 );
 success!
-timestamp: 2018-06-07T22:05:10.160249
-CREATE TABLE "wiki_media"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "wiki_page" INTEGER REFERENCES "wiki_page" ("id") ON DELETE CASCADE  ,
-    "title" CHAR(512),
-    "filename" CHAR(512),
-    "is_active" CHAR(1),
-    "created_on" TIMESTAMP,
-    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
-    "modified_on" TIMESTAMP,
-    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
-);
-success!
->>>>>>> e3bd5ba5a90b88f7bd3e5ae4eed19f5b99686d9a
-timestamp: 2018-06-11T14:52:58.928000
-CREATE TABLE "wiki_page"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "slug" CHAR(512),
-    "title" CHAR(255) UNIQUE,
-    "body" TEXT NOT NULL,
-    "tags" TEXT,
-    "can_read" TEXT,
-    "can_edit" TEXT,
-    "changelog" CHAR(512),
-    "html" TEXT,
-    "render" CHAR(512),
-    "is_active" CHAR(1),
-    "created_on" TIMESTAMP,
-    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
-    "modified_on" TIMESTAMP,
-    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
-);
-success!
-timestamp: 2018-06-11T14:52:59.138000
-CREATE TABLE "wiki_tag"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "name" CHAR(512),
-    "wiki_page" INTEGER REFERENCES "wiki_page" ("id") ON DELETE CASCADE  ,
-    "is_active" CHAR(1),
-    "created_on" TIMESTAMP,
-    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
-    "modified_on" TIMESTAMP,
-    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
-);
-success!
-timestamp: 2018-06-11T14:52:59.369000
+timestamp: 2018-06-11T15:23:10.756000
 CREATE TABLE "wiki_media"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "wiki_page" INTEGER REFERENCES "wiki_page" ("id") ON DELETE CASCADE  ,

@@ -183,20 +183,11 @@ var app = function() {
 
 
     self.play = function() {
-        console.log('dipshit');
-        var play = document.getElementById('play');
-        var dot = document.getElementById('dot');
-
-        play.addEventListener('click', function(a) {
-            console.log('dipshit2');
-            a.preventDefault;
-            self.vue.show=false;
-            console.log(dot.classList);
-            dot.classList.remove('animated');
-            void dot.offsetWidth;
-            dot.classList.add('animated');
-        }, false);
-
+            var animation = document.getElementsByClassName('animated')[0];
+            console.log('here?');
+            self.vue.more_buttons = true;
+            animation.classList.add('animated');
+            animation.style.animationPlayState = "running";
     };
 
 
@@ -283,7 +274,7 @@ var app = function() {
             restart: document.getElementById('restart'),
             dot: document.getElementById('dot'),
 
-
+             animation: document.getElementsByClassName('animated')[0],
             //end activity page //
         },
         methods: {
