@@ -157,9 +157,6 @@ var APP = null;
 
 // This will make everything accessible from the js console;
 // for instance, self.x above would be accessible as APP.x
-<<<<<<< HEAD
 jQuery(function(){APP = app();});
 
-=======
-jQuery(function(){APP = app();});
->>>>>>> 9e867e470b7b9d9249e422a08c1b99b18b0aa8ff
+
