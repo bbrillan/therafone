@@ -4,10 +4,20 @@
         <script src="{{=URL('static', 'js/vue.js')}}"></script>
         <script src="{{=URL('static', 'js/jquery.js')}}"></script>
 
-<script>
-    var bpm = 70;
-    var duration = 184;
-</script>
+
+
+
+        <script>
+            var play_url = "{{=URL('api', 'play_track')}}";
+            var tracks_url = "{{=URL('api', 'get_tracks', user_signature=True, hash_vars=False)}}";
+            var inc_plays_url = "{{=URL('api', 'inc_plays', user_signature=True)}}";
+            var get_insertion_id_url = "{{=URL('api', 'get_insertion_id', user_signature=True)}}";
+        </script>
+
+        <script>
+            var bpm = 70;
+            var duration = 184;
+        </script>
 
 {{end}}
 
@@ -16,23 +26,27 @@
     <div id="vue-div" class="display:none">
 
 
+
         <!-- Container for the activity window style="text-align: center" -->
+
+
 
 
         <div class="game_container">
 
             <div class="word_space">
-                <p class="center bold"> Watch me bounce bitch </p>
+                <p class="center bold">Chose a song you want to play along to!</p>
+                <p class="center bold"> Press Play to Start</p>
             </div>
 
 
             <div class="dot_space">
 
-                <div v-if="show" class="center">
-                    <button class="gbutton" v-on:click="play()">Test</button>
-                    <button class="gbutton" id="play">PLAYYYYY</button>
-                    <button class="gbutton" id="pause" >PAUSE ME </button>
-                    <button class="gbutton" id="restart">PLZ RESTART</button>
+                <div class="center">
+                    <button class="gbutton" v-on:click="play()">PLAY</button>
+                    <button class="gbutton" v-on:click="pause()">PAUSE</button>
+                    <button class="gbutton" v-on:click="restart()">RESTART</button>
+
                 </div>
 
                 <div id="dot" class="dot animated"></div>
@@ -41,12 +55,58 @@
 
             <div class="floor_space">
 
+
             </div>
 
         </div>
 
 
+
+<!--
+
+ <div v-if="selected_id >= 0" class="music_controller">
+                    <div v-if="selected_url">
+                        <audio v-bind:src="selected_url" controls autoplay>
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+        <div class="result_table center">
+            <table class="track_table">
+                <thead>
+                <tr>
+                  <th></th>
+                  <th>Track Length</th>
+                  <th>BPM</th>
+                  <th>Track</th>
+                  <th>N Plays</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="track in tracks">
+                  <td class="play_selector"><i class="fa" v-on:click="select_track(track._idx)" v-bind:class="{'fa-volume-up': track.id == selected_id, 'fa-volume-off': !(track.id == selected_id)}"></i></td>
+                  <td>${track.tracklength}</td>
+                  <td>${track.bpm}</td>
+                  <td>${track.title}</td>
+                  <td>${track.num_plays}</td>
+                  <td><i class="fa fa-trash-o" v-on:click="delete_track(track._idx)"></i></td>
+                </tr>
+                </tbody>
+              </table>
+              <div v-if="has_more" class="show_more">
+                <button class="btn btn-default rounded" v-on:click="get_more()">
+                  <i class="fa fa-ellipsis-h"></i>
+                  Load more
+                </button>
+              </div>
+        </div>
+
+-->
+
     </div>
 </div>
 
 <script src="{{=URL('static', 'js/default_play.js')}}"></script>
+

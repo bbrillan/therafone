@@ -12,69 +12,73 @@ var app = function() {
         }
     };
 
+    var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
 
-    //helper function for bounce()
-    self.up = function () {
-        var num = $(".dot");
-        num.slideUp(1000);
-        console.log(num);
-    };
-
-    //helper function for bounce()
-    self.down = function () {
-        var num = $(".dot");
-        num.slideDown(1000);
-        console.log(num);
-
-    };
-
-    self.stop_bounce = function(duration) {
-        console.log('stop?');
-        self.vue.stop_ball = true;
-        setTimeout(self.bounce, duration);
-    };
+    self.insertion_id = null; // Initialization.
 
 
-    self.bounce = function (bpm, duration) {    // duration must be in seconds
-        var bps = bpm / 60;                     // setting beats per minute to beats per second
-        var num_beats = bps * duration;         // number of beats in the song
-        console.log(num_beats);
-        self.vue.show_balls = true;
-        var btime = bps/2;                      //the time the ball will be traveling up or down.
-
-        self.vue.show = false;
-
-
-            for (var i = 0; i <= num_beats; i++) {   //for every beat
-                console.log('in for loop1');
-                var hit = bps * i;                    //the time stamp for every beat
-                console.log(hit);
-                for (var j = 0; j < bps; j++) { //what is going to happen for each beat; i.e. within each bounce
-                    console.log('in for loop2');
-                    if (j < btime) {
-                        $(".dot").slideDown(bps * 1000);
-                        console.log('going down');
-                    } else {
-                        $(".dot").slideUp(bps * 1000);
-                        console.log('going up');
-                    }
-                }
-                duration -=1;
-                console.log(duration);
-            } //end for num_beats
+    self.bounce = function () {
+        console.log('HI');
 
     };
 
 
-    self.play = function() {
+    self.play = function(bpm, duration) {
+        self.vue.is_playing = true;
+
+            var bps = bpm / 60;                     // setting beats per minute to beats per second
+            var num_beats = bps * duration;
+
+
             var animation = document.getElementsByClassName('animated')[0];
-            console.log('here?');
+            animation.style.setProperty("animation-iteration-count", num_beats); // the ball will bounce
+
+            animation.style.setProperty("animation-duration", 1 + "s");
             self.vue.more_buttons = true;
-            console.log($(".animated"));
             animation.classList.add('animated');
             animation.style.animationPlayState = "running";
+
+
+
+            //setting all the time stamps for the beats throughout the song.
+
+            for (var i = 0; i <= num_beats; i++) {   //for every beat
+                var hit = bps * i;                    //the time stamp for every beat
+                duration -=1;
+                self.vue.time_stamps[i] = hit;
+                //console.log(duration);
+            }
+
+        var start_time = Date.now();
+            var temp = 0;
+        $(document).keypress(function(event){
+            var counter = Date.now()-start_time;
+            console.log(Math.floor(counter/1000.0));
+            var yes = Math.floor(counter/1000.0);
+            temp += 1;
+            self.vue.hits[temp] = yes;
+        });
+
+
     };
 
+    self.pause = function() {
+        self.vue.is_playing = true;
+        var animation = document.getElementsByClassName('animated')[0];
+        self.vue.more_buttons = true;
+        animation.style.animationPlayState = "paused";
+    };
+
+    self.restart = function() {
+            self.vue.is_playing = true;
+            var dot = document.getElementById('dot');
+            var animation = document.getElementsByClassName('animated')[0];
+            self.vue.more_buttons = false;
+            dot.classList.remove('animated');
+            void dot.offsetWidth;
+            animation.style.animationPlayState = "paused";
+            dot.classList.add('animated');
+    };
 
     self.start = function () {
         self.vue.show=true;
@@ -86,12 +90,15 @@ var app = function() {
         var pause = document.getElementById('pause');
         var restart = document.getElementById('restart');
         var dot = document.getElementById('dot');
-
-
         var animation = document.getElementsByClassName('animated')[0];
+
+
+        };
+
+
         //'pressing play makes the ball bounce'//
 
-
+/*
         play.addEventListener('click', function(a) {
             a.preventDefault();
             self.vue.more_buttons = true;
@@ -114,9 +121,53 @@ var app = function() {
             void dot.offsetWidth;
             animation.style.animationPlayState = "paused";
         }, false);
+*/
 
 
-    };
+        self.select_track = function(track_idx) {
+            var track = self.vue.tracks[track_idx];
+            if (self.vue.selected_id === track.id) {
+                // Deselect track.
+                self.vue.selected_id = -1;
+            } else {
+                // Select it.
+                self.vue.selected_idx = track_idx;
+                self.vue.selected_id = track.id;
+                self.vue.selected_url = track.track_url;
+            }
+            if (self.vue.selected_url && self.vue.selected_id > -1) {
+                // We play the track.
+                self.inc_play_track(track_idx);
+            }
+        };
+
+        self.inc_play_track = function (track_idx) {
+            var track = self.vue.tracks[track_idx];
+            track.num_plays += 1;
+            $.post(
+                inc_plays_url,
+                {track_id: track.id},
+                function () {}
+            )
+        };
+
+        function get_tracks_url(start_idx, end_idx) {
+        var pp = {
+            start_idx: start_idx,
+            end_idx: end_idx
+        };
+            return tracks_url + "&" + $.param(pp);
+        }
+
+        self.get_tracks = function () {
+            $.getJSON(get_tracks_url(0, 10), function (data) {
+                self.vue.tracks = data.tracks;
+                self.vue.has_more = data.has_more;
+                self.vue.logged_in = data.logged_in;
+                enumerate(self.vue.tracks);
+            })
+        };
+
 
 
      self.vue = new Vue({
@@ -133,14 +184,25 @@ var app = function() {
             stop_ball: false,
             show: true,
             more_buttons: true,
+            is_playing: false,
+            hits: [],
+            time_stamps: [],
+            percent_hit: 0.0,
 
             plays: document.getElementById('play'),
             pause: document.getElementById('pause'),
             restart: document.getElementById('restart'),
             dot: document.getElementById('dot'),
-
-             animation: document.getElementsByClassName('animated')[0],
+            animation: document.getElementsByClassName('animated')[0],
             //end activity page //
+
+
+            selected_id: -1,
+            tracks: [],
+            logged_in: false,
+            has_more: false,
+
+
         },
         methods: {
 
@@ -153,6 +215,13 @@ var app = function() {
             start: self.start,
 
             play: self.play,
+            pause: self.pause,
+            restart: self.restart,
+
+
+            select_track: self.select_track,
+            inc_play_track: self.inc_play_track,
+            get_tracks: self.get_tracks,
 
         },
 

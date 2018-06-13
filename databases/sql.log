@@ -118,3 +118,35 @@ CREATE TABLE "wiki_media"(
     "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
 );
 success!
+timestamp: 2018-06-12T20:26:55.442905
+CREATE TABLE "track"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "tracklength" CHAR(512),
+    "bpm" CHAR(512),
+    "title" CHAR(512),
+    "num_plays" INTEGER,
+    "created_by" CHAR(512),
+    "created_on" CHAR(512)
+);
+success!
+timestamp: 2018-06-12T20:26:55.449649
+CREATE TABLE "track_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "track_id" INTEGER REFERENCES "track" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!
+timestamp: 2018-06-12T20:26:55.458210
+CREATE TABLE "users_track"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "tracklength" CHAR(512),
+    "bpm" CHAR(512),
+    "title" CHAR(512),
+    "liked_by" CHAR(512),
+    "num_plays" INTEGER,
+    "created_by" CHAR(512),
+    "created_on" CHAR(512)
+);
+success!
