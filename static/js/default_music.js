@@ -94,8 +94,7 @@ var app = function() {
                 liked_by: self.vue.current_user.id,
             }
             );
-        }
-    };
+        };
 
     self.delete_track = function(track_idx) {
         $.post(del_track_url,
@@ -139,7 +138,7 @@ var app = function() {
           self.vue.current_user = data.current_user;
         }
       )
-    }
+    };
 
     self.inc_play_track = function (track_idx) {
         var track = self.vue.tracks[track_idx];
@@ -179,9 +178,11 @@ var app = function() {
             cancel_add_track: self.cancel_add_track,
             add_user_track: self.add_user_track,
             get_current_user: self.get_current_user
-        }
+        },
 
     });
+
+
     self.get_current_user();
     self.get_tracks();
     $("#vue-div").show();

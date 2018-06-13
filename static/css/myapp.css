@@ -42,7 +42,7 @@ div.memo div.button_list a.btn {
   padding: 10px;
 }
 
-<<<<<<< HEAD
+
 /* misc classes */
 
 .bold {
@@ -70,8 +70,6 @@ div.game_container {
     border: 1px solid black;
     text-align: center;
 }
-=======
->>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 
 
 /* misc classes */
@@ -166,10 +164,6 @@ div.game_container div.floor_space {
   100% {transform: translate(0px, 0px);}
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 @-webkit-keyframes bounce-in {
   0% {-webkit-transform: translate(0px, 0px);}
   50% {-webkit-transform: translate(0px, 145px);}
@@ -178,7 +172,3 @@ div.game_container div.floor_space {
 
 /* end activity page*/
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
