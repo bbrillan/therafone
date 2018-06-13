@@ -108,28 +108,43 @@ $(function() {
 
     <!-- Code to display the table of tracks -->
     <div class="result_table">
-      <table class="track_table">
+      <div class="track_entry" v-for="track in tracks">
+        <table class="track_table">
         <thead>
         <tr>
           <th></th>
+          <th>Song Title</th>
           <th>Track Length</th>
           <th>BPM</th>
           <th>Track</th>
-          <th>N Plays</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="track in tracks">
-          <td class="play_selector"><i class="fa" v-on:click="select_track(track._idx)" v-bind:class="{'fa-volume-up': track.id == selected_id, 'fa-volume-off': !(track.id == selected_id)}"></i></td>
+        <tr>
+          <!--<td class="play_selector"><i class="fa" v-on:click="select_track(track._idx)" v-bind:class="{'fa-volume-up': track.id == selected_id, 'fa-volume-off': !(track.id == selected_id)}"></i></td>
+          -->
+          <td>${track.title}</td>
           <td>${track.tracklength}</td>
           <td>${track.bpm}</td>
-          <td>${track.title}</td>
-          <td>${track.num_plays}</td>
-          <td><i class="fa fa-trash-o" v-on:click="delete_track(track._idx)"></i></td>
         </tr>
         </tbody>
-      </table>
+        </table>
+
+        <div class="button_list">
+          <div class="buttons">
+
+            <!-- TO DO -->
+            <button type="button"><i class="fa fa-play"></i></button>
+            <button type="button"><i class="fa fa-thumbs-o-up"></i></button>
+            <!--<button type="button"><i class="fa fa-thumbs-up"></i></button> Add v-if="is_liked"-->
+            <!-- END TO DO -->
+
+            <button type="button" v-on:click="delete_track(track._idx)"><i class="fa fa-trash-o"></i></button>
+          </div>
+        </div>
+      </div>
+
       <div v-if="has_more" class="show_more">
         <button class="btn btn-default rounded" v-on:click="get_more()">
           <i class="fa fa-ellipsis-h"></i>
