@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.264639
 =======
 timestamp: 2018-06-12T19:57:24.461816
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:08.117000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "web2py_session_therafone"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "locked" CHAR(1),
@@ -14,10 +18,14 @@ CREATE TABLE "web2py_session_therafone"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.279032
 =======
 timestamp: 2018-06-12T19:57:24.466830
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:08.417000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -30,10 +38,14 @@ CREATE TABLE "auth_user"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.290130
 =======
 timestamp: 2018-06-12T19:57:24.471235
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:08.653000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
@@ -41,10 +53,14 @@ CREATE TABLE "auth_group"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.296219
 =======
 timestamp: 2018-06-12T19:57:24.474158
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:08.977000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -52,10 +68,14 @@ CREATE TABLE "auth_membership"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.302195
 =======
 timestamp: 2018-06-12T19:57:24.477260
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:09.449000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
@@ -65,10 +85,14 @@ CREATE TABLE "auth_permission"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.308502
 =======
 timestamp: 2018-06-12T19:57:24.481245
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:09.704000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -79,10 +103,14 @@ CREATE TABLE "auth_event"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.314615
 =======
 timestamp: 2018-06-12T19:57:24.485492
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:09.880000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -93,10 +121,14 @@ CREATE TABLE "auth_cas"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.324997
 =======
 timestamp: 2018-06-12T19:57:24.490954
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-11T15:23:10.056000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "checklist"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_email" CHAR(512),
@@ -107,7 +139,11 @@ CREATE TABLE "checklist"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.334101
+=======
+timestamp: 2018-06-11T15:23:10.360000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "wiki_page"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "slug" CHAR(512),
@@ -126,7 +162,11 @@ CREATE TABLE "wiki_page"(
     "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
 );
 success!
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.343929
+=======
+timestamp: 2018-06-11T15:23:10.572000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "wiki_tag"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "name" CHAR(512),
@@ -138,7 +178,11 @@ CREATE TABLE "wiki_tag"(
     "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
 );
 success!
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.350772
+=======
+timestamp: 2018-06-11T15:23:10.756000
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "wiki_media"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "wiki_page" INTEGER REFERENCES "wiki_page" ("id") ON DELETE CASCADE  ,
@@ -151,6 +195,7 @@ CREATE TABLE "wiki_media"(
     "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
 );
 success!
+<<<<<<< HEAD
 timestamp: 2018-06-12T20:26:55.442905
 =======
 timestamp: 2018-06-12T19:57:24.495176
@@ -196,6 +241,8 @@ CREATE TABLE "users_track"(
 success!
 <<<<<<< HEAD
 timestamp: 2018-06-12T23:00:45.774438
+=======
+timestamp: 2018-06-10T23:22:13.095602
 CREATE TABLE "web2py_session_therafone"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "locked" CHAR(1),
@@ -205,7 +252,32 @@ CREATE TABLE "web2py_session_therafone"(
     "unique_key" CHAR(64),
     "session_data" BLOB
 );
+timestamp: 2018-06-10T23:22:46.369107
+CREATE TABLE "web2py_session_therafone"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "locked" CHAR(1),
+    "client_ip" CHAR(64),
+    "created_datetime" TIMESTAMP,
+    "modified_datetime" TIMESTAMP,
+    "unique_key" CHAR(64),
+    "session_data" BLOB
+);
+timestamp: 2018-06-11T14:56:36.700391
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+CREATE TABLE "web2py_session_therafone"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "locked" CHAR(1),
+    "client_ip" CHAR(64),
+    "created_datetime" TIMESTAMP,
+    "modified_datetime" TIMESTAMP,
+    "unique_key" CHAR(64),
+    "session_data" BLOB
+);
+<<<<<<< HEAD
 timestamp: 2018-06-12T23:04:16.432733
+=======
+timestamp: 2018-06-11T14:56:40.567809
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 CREATE TABLE "web2py_session_therafone"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "locked" CHAR(1),
@@ -215,5 +287,8 @@ CREATE TABLE "web2py_session_therafone"(
     "unique_key" CHAR(64),
     "session_data" BLOB
 );
+<<<<<<< HEAD
 =======
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4

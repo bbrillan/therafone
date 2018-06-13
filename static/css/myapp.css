@@ -42,6 +42,7 @@ div.memo div.button_list a.btn {
   padding: 10px;
 }
 
+<<<<<<< HEAD
 /* misc classes */
 
 .bold {
@@ -69,6 +70,8 @@ div.game_container {
     border: 1px solid black;
     text-align: center;
 }
+=======
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 
 
 /* misc classes */
@@ -77,6 +80,9 @@ div.game_container {
   font-weight: bold;
 }
 
+.blue {
+    color: blue;
+}
 
 
 /* Buttons */
@@ -94,17 +100,15 @@ div.game_container {
 
 
 /* activity page */
-div.game_container {
+.game_container {
   border: 1px solid black;
   height: 400px;
   width: 600px;
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 div.game_container div.word_space {
   background-color: #f5f5f5;
-  padding: 50px 0;
-  text-align: center;
   color: #0e0e0e;
   height:100px;
   width: 599px;
@@ -118,7 +122,7 @@ div.game_container div.dot_space {
   width: 599px;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
-    position: relative;
+  position: relative;
 }
 
 div.game_container div.floor_space {
@@ -137,17 +141,17 @@ div.game_container div.floor_space {
   width: 25px;
   border-radius: 50%;
   position: relative;
-    -webkit-transform: translate(0px, 0px);
+  -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
 }
 
 
 .animated {
-  animation: bounce-in ;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-play-state: paused;
+    animation: bounce-in ;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: paused;
     -webkit-animation: bounce-in;
     -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
@@ -162,6 +166,10 @@ div.game_container div.floor_space {
   100% {transform: translate(0px, 0px);}
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
 @-webkit-keyframes bounce-in {
   0% {-webkit-transform: translate(0px, 0px);}
   50% {-webkit-transform: translate(0px, 145px);}
@@ -170,4 +178,7 @@ div.game_container div.floor_space {
 
 /* end activity page*/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
