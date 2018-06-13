@@ -13,7 +13,9 @@
   var get_insertion_id_url = "{{=URL('api', 'get_insertion_id', user_signature=True)}}";
   var cleanup_url = "{{=URL('api', 'cleanup', user_signature=True)}}";
   var add_liked_track_url = "{{=URL('api', 'add_liked_track', user_signature=True)}}";
-  var my_user_url= "{{=URL('api', 'get_current_user')}}"
+  var del_liked_track_url = "{{=URL('api', 'del_liked_track', user_signature=True)}}";
+  var my_user_url= "{{=URL('api', 'get_current_user')}}";
+  var get_liked_tracks_url = "{{=URL('api', 'get_liked_tracks', user_signature=True)}}";
 </script>
 
 <script src="{{=URL('static', 'js/dropzone.js')}}"></script>
@@ -108,12 +110,12 @@ $(function() {
           <th>Song Title</th>
           <th>Track Length</th>
           <th>BPM</th>
-          <th>Track</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
         <tr>
+          <td></td>
           <td>${track.title}</td>
           <td>${track.tracklength}</td>
           <td>${track.bpm}</td>
@@ -137,8 +139,8 @@ $(function() {
 
             <!-- TO DO -->
             <button type="button"><i class="fa fa-play"></i></button>
-            <button type="button"><i class="fa fa-thumbs-o-up"></i></button>
-            <!--<button type="button"><i class="fa fa-thumbs-up"></i></button> Add v-if="is_liked"-->
+            <button type="button" v-if="!is_liked()" v-on:click="like_track(track._idx)"><i class="fa fa-thumbs-o-up"></i></button>
+            <button type="button" v-if="is_liked()"><i class="fa fa-thumbs-up"></i></button>
             <!-- END TO DO -->
 
             <button type="button" v-on:click="delete_track(track._idx)"><i class="fa fa-trash-o"></i></button>

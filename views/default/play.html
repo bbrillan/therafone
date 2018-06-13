@@ -8,6 +8,8 @@
     var bpm = 70;
     var duration = 184;
     var tracks_url = "{{=URL('api', 'get_tracks', user_signature=True, hash_vars=False)}}";
+    var my_user_url= "{{=URL('api', 'get_current_user')}}";
+    var get_liked_tracks_url = "{{=URL('api', 'get_liked_tracks', user_signature=True)}}";
 </script>
 
 {{end}}
@@ -22,19 +24,19 @@
             <div class="container quarter">
 
                 <!-- TO DO -->
-                <div class="track_entry" v-for="track in tracks">
-                    ${track.title}
+                <!--<div class="track_entry" v-for="track in liked_tracks">-->
+                    <!--${track.liked_title}-->
 
-                    <div class="button_list">
-                        <div class="buttons">
+                    <!--<div class="button_list">-->
+                        <!--<div class="buttons">-->
 
-                            <!-- TO DO -->
-                            <button type="button"><i class="fa fa-play"></i></button>
-                            <!-- END TO DO -->
+                            <!--&lt;!&ndash; TO DO &ndash;&gt;-->
+                            <!--<button type="button"><i class="fa fa-play"></i></button>-->
+                            <!--&lt;!&ndash; END TO DO &ndash;&gt;-->
 
-                        </div>
-                    </div>
-                </div>
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!-- END TO DO -->
 
             </div>

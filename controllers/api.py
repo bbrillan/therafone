@@ -109,6 +109,21 @@ def get_tracks():
         has_more=has_more,
     ))
 
+@auth.requires_signature(hash_vars=False)
+def get_liked_tracks():
+    liked_tracks = []
+    rows = db().select(db.liked_track.ALL, orderby=db.liked_track.liked_title)
+    for i, r in enumerate(rows):
+        t = dict(
+            id = r.id,
+            liked_by = r.liked_by,
+            liked_title = r.liked_title,
+        )
+        liked_tracks.append(t)
+    return response.json(dict(
+        liked_tracks=liked_tracks
+    ))
+
 @auth.requires_signature()
 def get_insertion_id():
     insertion_id = web2py_uuid()
@@ -211,55 +226,25 @@ def inc_plays():
     return "ok"
 
 @auth.requires_signature()
-def add_user_track():
-    """Received the metadata for a new track."""
-    # Inserts the track information.
-    t_id = db.user_track.insert(
-        tracklength = request.vars.tracklength,
-        bpm = request.vars.bpm,
-        liked_by = request.vars.liked_by,
-        title = request.vars.title,
-        num_plays = 0
-    )
-    # Then, updates the uploaded track to point to this track.
-    db(db.track_data.id == request.vars.insertion_id).update(track_id=t_id)
-    # Also, to clean up, remove tracks that do not belong to anyone.
-    db(db.user_track_data.track_id == None).delete()
-    # Returns the track info.  Building the dict should likely be done in
-    # a shared function, but oh well.
-    return response.json(dict(user_track=dict(
-        id = t_id,
-        tracklength = request.vars.tracklength,
-        bpm = request.vars.bpm,
-        title = request.vars.title,
-        liked_by=request.vars.liked_by,
-        num_plays = 0,
-        track_url = build_track_url(t_id)
-    )))
-
-@auth.requires_signature()
 def add_liked_track():
     """Received the metadata for a new track."""
     # Inserts the track information.
+    new_liked_by = request.vars.liked_by
+    new_liked_title = request.vars.liked_title
     t_id = db.liked_track.insert(
-        liked_by = request.vars.liked_by,
-        liked_title = request.vars.title
+        liked_by = new_liked_by,
+        liked_title = new_liked_title
     )
-    # Then, updates the uploaded track to point to this track.
-    db(db.track_data.id == request.vars.insertion_id).update(track_id=t_id)
-    # Also, to clean up, remove tracks that do not belong to anyone.
-    db(db.user_track_data.track_id == None).delete()
-    # Returns the track info.  Building the dict should likely be done in
-    # a shared function, but oh well.
-    return response.json(dict(user_track=dict(
+    return response.json(dict(
         id = t_id,
-        tracklength = request.vars.tracklength,
-        bpm = request.vars.bpm,
-        title = request.vars.title,
-        liked_by=request.vars.liked_by,
-        num_plays = 0,
-        track_url = build_track_url(t_id)
-    )))
+        liked_by = new_liked_by,
+        liked_title = new_liked_title
+    ))
+
+@auth.requires_signature()
+def del_liked_track():
+    db(db.liked_track.id == request.vars.id).delete()
+    return "ok"
 
 def get_current_user():
     current_firstname=""

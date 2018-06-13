@@ -15,21 +15,26 @@ var app = function() {
     // Enumerates an array.
     var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
 
-    function get_tracks_url(start_idx, end_idx) {
-        var pp = {
-            start_idx: start_idx,
-            end_idx: end_idx
-        };
-        return tracks_url + "&" + $.param(pp);
-    }
+    self.get_liked_tracks = function(){
+        $.getJSON(get_liked_tracks_url, function (data) {
+            for(var i = 0; i<data.liked_tracks.length; i++){
+                if(data.liked_tracks[i].liked_by == self.vue.current_user.id){
+                    self.vue.liked_tracks.push(data.liked_tracks[i]);
+                }
+            enumerate(self.vue.liked_tracks);
+            }
+        });
+    };
 
-    self.get_tracks = function () {
-        $.getJSON(get_tracks_url(0, 10), function (data) {
-            self.vue.tracks = data.tracks;
-            self.vue.has_more = data.has_more;
-            self.vue.logged_in = data.logged_in;
-            enumerate(self.vue.tracks);
-        })
+    self.get_current_user = function(){
+      $.getJSON(
+        my_user_url,
+        function(data){
+          console.log(data);
+          self.vue.current_user = data.current_user;
+          self.get_liked_tracks();
+        }
+      );
     };
 
     //helper function for bounce()
@@ -143,9 +148,8 @@ var app = function() {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-            tracks: [],
-            logged_in: false,
-            has_more: false,
+            liked_tracks: [],
+            current_user: null,
 
             play_button: false,
 
@@ -180,7 +184,7 @@ var app = function() {
 
     });
 
-    self.get_tracks();
+    self.get_current_user();
     self.start();
     $("#vue-div").show();
     return self;

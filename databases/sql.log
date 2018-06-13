@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.827818
-=======
-timestamp: 2018-06-12T21:28:03.489000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:40.492000
 CREATE TABLE "web2py_session_therafone"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "locked" CHAR(1),
@@ -13,11 +9,7 @@ CREATE TABLE "web2py_session_therafone"(
     "session_data" BLOB
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.833492
-=======
-timestamp: 2018-06-12T21:28:03.784000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:40.918000
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -29,33 +21,21 @@ CREATE TABLE "auth_user"(
     "registration_id" CHAR(512)
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.837644
-=======
-timestamp: 2018-06-12T21:28:04.001000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:41.374000
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.840931
-=======
-timestamp: 2018-06-12T21:28:04.253000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:41.685000
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.844131
-=======
-timestamp: 2018-06-12T21:28:04.559000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:41.958000
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
@@ -64,11 +44,7 @@ CREATE TABLE "auth_permission"(
     "record_id" INTEGER
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.847854
-=======
-timestamp: 2018-06-12T21:28:05.044000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:42.256000
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -78,11 +54,7 @@ CREATE TABLE "auth_event"(
     "description" TEXT
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.851655
-=======
-timestamp: 2018-06-12T21:28:05.277000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:42.498000
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -92,11 +64,7 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.856641
-=======
-timestamp: 2018-06-12T21:28:05.598000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:42.750000
 CREATE TABLE "checklist"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_email" CHAR(512),
@@ -106,11 +74,7 @@ CREATE TABLE "checklist"(
     "is_public" CHAR(1)
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.861070
-=======
-timestamp: 2018-06-12T21:28:05.782000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:42.936000
 CREATE TABLE "track"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "tracklength" CHAR(512),
@@ -121,11 +85,7 @@ CREATE TABLE "track"(
     "created_on" CHAR(512)
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.864893
-=======
-timestamp: 2018-06-12T21:28:06.095000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:43.117000
 CREATE TABLE "track_data"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "track_id" INTEGER REFERENCES "track" ("id") ON DELETE CASCADE  ,
@@ -134,11 +94,7 @@ CREATE TABLE "track_data"(
     "mime_type" CHAR(512)
 );
 success!
-<<<<<<< HEAD
-timestamp: 2018-06-12T21:39:40.868248
-=======
-timestamp: 2018-06-12T21:28:06.294000
->>>>>>> 06a855f65ac73dcc44d5f006f269d9b47951266a
+timestamp: 2018-06-12T22:04:43.309000
 CREATE TABLE "liked_track"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "liked_title" CHAR(512),
