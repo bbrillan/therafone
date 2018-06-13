@@ -58,15 +58,6 @@ $(function() {
   <div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
 
-    <!-- Music player -->
-    <div v-if="selected_id >= 0" class="music_controller">
-      <div v-if="selected_url">
-        <audio v-bind:src="selected_url" controls autoplay>
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-    </div>
-
     <!-- Form to add tracks -->
     <div v-if="is_adding_track_info" id="add_track_div">
       <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
@@ -123,14 +114,23 @@ $(function() {
         </thead>
         <tbody>
         <tr>
-          <td class="play_selector"><i class="fa" v-on:click="select_track(track._idx)" v-bind:class="{'fa-volume-up': track.id == selected_id, 'fa-volume-off': !(track.id == selected_id)}"></i></td>
-
           <td>${track.title}</td>
           <td>${track.tracklength}</td>
           <td>${track.bpm}</td>
         </tr>
         </tbody>
         </table>
+
+        <td class="play_selector"><i class="fa" v-on:click="select_track(track._idx)" v-bind:class="{'fa-volume-up': track.id == selected_id, 'fa-volume-off': !(track.id == selected_id)}"></i></td>
+
+        <!-- Music player -->
+        <div v-if="selected_id >= 0 && selected_id === track.id" class="music_controller">
+          <div v-if="selected_url">
+            <audio v-bind:src="selected_url" controls autoplay>
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
 
         <div class="button_list">
           <div class="buttons">
