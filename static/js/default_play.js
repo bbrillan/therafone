@@ -56,10 +56,10 @@ var app = function() {
             document.onkeydown = function (event) {
                     self.vue.timerr = event.timeStamp/1000.0;
                     tempvar = event.timeStamp/1000.0;
-                    console.log("hit time " + (self.vue.timerr));
+                    console.log("hit time: " + (self.vue.timerr));
                     temparr[counter] = tempvar;
                     counter += 1;
-                    console.log("hit time arr: " + temparr);
+                  //  console.log("hit time arr: " + temparr);
             };
 
         }
@@ -68,7 +68,7 @@ var app = function() {
         if (self.vue.is_playing && self.vue.is_restart) {
             self.vue.temp = event.timeStamp - event.timeStamp;
             self.vue.timerr = self.vue.temp + event.timeStamp;
-            console.log(self.vue.temp +"timer" +  self.vue.timerr);
+//            console.log(self.vue.temp +"timer" +  self.vue.timerr);
 
         }
 
@@ -79,6 +79,8 @@ var app = function() {
 
     self.play = function(bpm, duration) {
         self.vue.is_playing = true;
+        self.vue.is_restart = false;
+        self.vue.is_paused = true;
         self.vue.timerr = 0.0;
         self.bounce();
 
@@ -115,6 +117,7 @@ var app = function() {
     self.restart = function() {
             self.vue.is_playing = false;
             self.vue.is_restart = true;
+            self.vue.is_paused = false;
             self.vue.hits = [];
             self.vue.time_stamps = [];
             self.vue.timerr = 0.0;
@@ -222,7 +225,8 @@ var app = function() {
             animation: document.getElementsByClassName('animated')[0],
             //end activity page //
 
-
+            is_paused: false,
+            is_restart:false,
             selected_id: -1,
             tracks: [],
             logged_in: false,

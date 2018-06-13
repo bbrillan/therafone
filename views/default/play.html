@@ -27,7 +27,7 @@
         <div class="container">
 
             <!-- Container for user quick reference library -->
-            <div class="container quarter">
+            <div class="spaced">
 
 
             </div>
@@ -35,12 +35,12 @@
             <!-- Container for the activity window style="text-align: center" -->
             <div class="game_container">
                 <div class="word_space">
-                    <p class="center bold"> Press Play to Start</p>
+                    <p class="center bold"> Tap the 'SPACE BAR' each time the ball bounces</p>
                 </div>
 
                 <div class="dot_space center black">
 
-                    <button class="gbutton" v-on:click="play(62, 417)">PLAY</button>
+                    <button class="gbutton" v-on:click="play(46, 417)">PLAY</button>
                     <button class="gbutton" v-on:click="pause()">PAUSE</button>
                     <button class="gbutton" v-on:click="restart()">RESTART</button>
                     <div id="dot" class="dot animated"></div>
@@ -49,16 +49,16 @@
 
 
                 <div class="floor_space">
-                    <div v-if="is_playing" class="audio_test" style="background: white">
+                    <div v-if="is_playing && !is_restart && is_paused" class="audio_test" style="background: white">
                         <audio id="song" controls autoplay>
                                 <source src="/therafone/static/audio/Heynong_Man.mp3" type="audio/mp3"/>
                         </audio>
                     </div>
 
                     <div class="right">
-                        <button class="bbutton" style="background: #b9cfa0" v-on:click="play(speed/3, duration)">EASY</button>
-                        <button class="bbutton" style="background: #fff47e" v-on:click="play(speed, duration)">MEDIUM</button>
-                        <button class="bbutton" style="background: #d26ed0" v-on:click="play(speed*3, duration)">HARD</button>
+                        <button class="bbutton" style="background: #b9cfa0" v-on:click="play(46*2, 417)">EASY</button>
+                        <button class="bbutton" style="background: #fff47e" v-on:click="play(46, 417)">MEDIUM</button>
+                        <button class="bbutton" style="background: #d26ed0" v-on:click="play(46*(1/2), 417)">HARD</button>
                     </div>
 
                 </div>
