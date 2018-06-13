@@ -264,14 +264,16 @@ def add_liked_track():
 def get_current_user():
     current_firstname=""
     current_lastname=""
-    current_id = 0
-    rows = db.select(db.auth_user.ALL, orderby=db.auth_user.last_name)
-    for r in rows:
-        if r.id == auth.user.id:
-            current_firstname = r.first_name
-            current_lastname = r.last_name
-            current_id = int(str(r.id)[:1])
-    current_user = dict(first_name = current_firstname, last_name = current_lastname, id = current_id,)
+    user_id = 0
+    row = db(db.auth_user.id == auth.user.id).select()
+    for i, r in enumerate(row):
+        temp_user = dict(
+            first_name=r.first_name,
+            last_name=r.last_name,
+            user_id=r.id
+        )
+        current_user = temp_user
+
     return response.json(dict(current_user=current_user))
 
 # ################# end 'play' Page #######################
