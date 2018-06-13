@@ -12,7 +12,8 @@
   var inc_plays_url = "{{=URL('api', 'inc_plays', user_signature=True)}}";
   var get_insertion_id_url = "{{=URL('api', 'get_insertion_id', user_signature=True)}}";
   var cleanup_url = "{{=URL('api', 'cleanup', user_signature=True)}}";
-   var add_user_track_url = "{{=URL('api', 'add_user_track', user_signature=True)}}";
+  var add_liked_track_url = "{{=URL('api', 'add_liked_track', user_signature=True)}}";
+  var my_user_url= "{{=URL('api', 'get_current_user')}}"
 </script>
 
 <script src="{{=URL('static', 'js/dropzone.js')}}"></script>

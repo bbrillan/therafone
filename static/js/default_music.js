@@ -85,21 +85,15 @@ var app = function() {
             });
     };
 
-    self.add_user_track = function (track_id) {
+    self.add_liked_track = function (track_id) {
         // Submits the track info.
         // This is the last step of the track insertion process.
-        for(var i = 0; i<self.vue.tracks.length; i++){
-            if(track_id===self.vue.tracks[i].track_id){
-                 $.post(add_user_track_url,
-                    {
-                        tracklength: self.vue.form_tracklength,
-                        title: self.vue.form_track,
-                        bpm: self.vue.form_bpm,
-                        liked_by: self.vue.current_user.id,
-                        insertion_id: self.insertion_id
-                    }
-                );
+        $.post(add_liked_track_url,
+            {
+                title: self.vue.tracks[track_id].title,
+                liked_by: self.vue.current_user.id,
             }
+            );
         }
     };
 
@@ -137,6 +131,16 @@ var app = function() {
         }
     };
 
+    self.get_current_user = function(){
+      $.getJSON(
+        my_user_url,
+        function(data){
+          console.log(data);
+          self.vue.current_user = data.current_user;
+        }
+      )
+    }
+
     self.inc_play_track = function (track_idx) {
         var track = self.vue.tracks[track_idx];
         track.num_plays += 1;
@@ -163,6 +167,7 @@ var app = function() {
             form_tracklength: null,
             form_track: null,
             form_bpm: null,
+            current_user: null,
             selected_id: -1  // Track selected to play.
         },
         methods: {
@@ -177,7 +182,7 @@ var app = function() {
         }
 
     });
-
+    self.get_current_user();
     self.get_tracks();
     $("#vue-div").show();
 
