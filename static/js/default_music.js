@@ -98,16 +98,11 @@ var app = function() {
                 title: self.vue.tracks[track_id].title,
                 liked_by: self.vue.current_user.id,
             },
-            function(){
+            function () {
                 self.get_liked_tracks();
-            }
-<<<<<<< HEAD
-            );
-        };
-=======
-         );
-    };
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
+            })
+    }
+
 
     self.delete_track = function(id) {
         $.post(del_track_url,
@@ -159,12 +154,7 @@ var app = function() {
         function(data){
           console.log(data);
           self.vue.current_user = data.current_user;
-        }
-<<<<<<< HEAD
-      )
-=======
-      );
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
+        })
     };
 
     self.inc_play_track = function (track_idx) {
@@ -213,17 +203,12 @@ var app = function() {
             delete_track: self.delete_track,
             select_track: self.select_track,
             cancel_add_track: self.cancel_add_track,
-<<<<<<< HEAD
             add_user_track: self.add_user_track,
-            get_current_user: self.get_current_user
-        },
-=======
             get_current_user: self.get_current_user,
             is_liked: self.is_liked,
             like_track: self.like_track,
             dislike_track: self.dislike_track
-        }
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
+        },
 
     });
 

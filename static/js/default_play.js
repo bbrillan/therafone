@@ -12,10 +12,6 @@ var app = function() {
         }
     };
 
-<<<<<<< HEAD
-    var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
-=======
-    // Enumerates an array.
     var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
 
     self.get_liked_tracks = function(){
@@ -39,7 +35,6 @@ var app = function() {
         }
       );
     };
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 
     self.insertion_id = null; // Initialization.
 

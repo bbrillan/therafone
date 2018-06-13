@@ -4,7 +4,6 @@
         <script src="{{=URL('static', 'js/vue.js')}}"></script>
         <script src="{{=URL('static', 'js/jquery.js')}}"></script>
 
-<<<<<<< HEAD
 
 
 
@@ -19,7 +18,6 @@
             var bpm = 70;
             var duration = 184;
         </script>
-=======
 <script>
     var bpm = 70;
     var duration = 184;
@@ -27,7 +25,6 @@
     var my_user_url= "{{=URL('api', 'get_current_user')}}";
     var get_liked_tracks_url = "{{=URL('api', 'get_liked_tracks', user_signature=True)}}";
 </script>
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 
 {{end}}
 
@@ -35,89 +32,44 @@
 <div class="main content">
     <div id="vue-div" class="display:none">
 
-<<<<<<< HEAD
-
-
-
-
-=======
         <div class="container">
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 
             <!-- Container for user quick reference library -->
             <div class="container quarter">
 
-<<<<<<< HEAD
+
 
             <div class="word_space">
                 <p class="center bold">Chose a song you want to play along to!</p>
                 <p class="center bold"> Press Play to Start</p>
             </div>
-=======
-                <!-- TO DO -->
-                <!--<div class="track_entry" v-for="track in liked_tracks">-->
-                    <!--${track.liked_title}-->
 
-                    <!--<div class="button_list">-->
-                        <!--<div class="buttons">-->
-
-                            <!--&lt;!&ndash; TO DO &ndash;&gt;-->
-                            <!--<button type="button"><i class="fa fa-play"></i></button>-->
-                            <!--&lt;!&ndash; END TO DO &ndash;&gt;-->
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
-
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!-- END TO DO -->
 
             </div>
 
             <!-- Container for the activity window style="text-align: center" -->
-            <div class="game_container threequarters">
+            <div class="game_container">
 
-<<<<<<< HEAD
+
                 <div class="center">
                     <button class="gbutton" v-on:click="play()">PLAY</button>
                     <button class="gbutton" v-on:click="pause()">PAUSE</button>
                     <button class="gbutton" v-on:click="restart()">RESTART</button>
 
-=======
-                <div class="word_space">
-                    <p class="center bold"> Watch me bounce bitch </p>
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
                 </div>
 
-                <div class="dot_space">
-
-                    <div v-if="show" class="center">
-                        <button class="gbutton" v-on:click="play()">Test</button>
-                        <button class="gbutton" id="play">PLAYYYYY</button>
-                        <button class="gbutton" id="pause" >PAUSE ME </button>
-                        <button class="gbutton" id="restart">PLZ RESTART</button>
-                    </div>
-
-                    <div id="dot" class="dot"></div>
-
-<<<<<<< HEAD
 
             </div>
-=======
+
                 </div>
 
                 <div class="floor_space">
->>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
+
 
                 </div>
 
             </div>
         </div>
-
-
-
-
-    </div>
-</div>
 
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
