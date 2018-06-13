@@ -150,3 +150,23 @@ CREATE TABLE "users_track"(
     "created_on" CHAR(512)
 );
 success!
+timestamp: 2018-06-12T23:00:45.774438
+CREATE TABLE "web2py_session_therafone"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "locked" CHAR(1),
+    "client_ip" CHAR(64),
+    "created_datetime" TIMESTAMP,
+    "modified_datetime" TIMESTAMP,
+    "unique_key" CHAR(64),
+    "session_data" BLOB
+);
+timestamp: 2018-06-12T23:04:16.432733
+CREATE TABLE "web2py_session_therafone"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "locked" CHAR(1),
+    "client_ip" CHAR(64),
+    "created_datetime" TIMESTAMP,
+    "modified_datetime" TIMESTAMP,
+    "unique_key" CHAR(64),
+    "session_data" BLOB
+);
