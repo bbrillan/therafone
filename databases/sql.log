@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.264639
 =======
 timestamp: 2018-06-12T19:57:24.461816
@@ -7,6 +8,9 @@ timestamp: 2018-06-12T19:57:24.461816
 =======
 timestamp: 2018-06-11T15:23:08.117000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:40.492000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "web2py_session_therafone"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "locked" CHAR(1),
@@ -19,6 +23,7 @@ CREATE TABLE "web2py_session_therafone"(
 success!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.279032
 =======
 timestamp: 2018-06-12T19:57:24.466830
@@ -26,6 +31,9 @@ timestamp: 2018-06-12T19:57:24.466830
 =======
 timestamp: 2018-06-11T15:23:08.417000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:40.918000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -39,6 +47,7 @@ CREATE TABLE "auth_user"(
 success!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.290130
 =======
 timestamp: 2018-06-12T19:57:24.471235
@@ -46,12 +55,16 @@ timestamp: 2018-06-12T19:57:24.471235
 =======
 timestamp: 2018-06-11T15:23:08.653000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:41.374000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.296219
@@ -61,12 +74,16 @@ timestamp: 2018-06-12T19:57:24.474158
 =======
 timestamp: 2018-06-11T15:23:08.977000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:41.685000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
 );
 success!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.302195
@@ -76,6 +93,9 @@ timestamp: 2018-06-12T19:57:24.477260
 =======
 timestamp: 2018-06-11T15:23:09.449000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:41.958000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
@@ -86,6 +106,7 @@ CREATE TABLE "auth_permission"(
 success!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.308502
 =======
 timestamp: 2018-06-12T19:57:24.481245
@@ -93,6 +114,9 @@ timestamp: 2018-06-12T19:57:24.481245
 =======
 timestamp: 2018-06-11T15:23:09.704000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:42.256000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -104,6 +128,7 @@ CREATE TABLE "auth_event"(
 success!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.314615
 =======
 timestamp: 2018-06-12T19:57:24.485492
@@ -111,6 +136,9 @@ timestamp: 2018-06-12T19:57:24.485492
 =======
 timestamp: 2018-06-11T15:23:09.880000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:42.498000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -122,6 +150,7 @@ CREATE TABLE "auth_cas"(
 success!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.324997
 =======
 timestamp: 2018-06-12T19:57:24.490954
@@ -129,6 +158,9 @@ timestamp: 2018-06-12T19:57:24.490954
 =======
 timestamp: 2018-06-11T15:23:10.056000
 >>>>>>> 5f57874ebf82782bcc37d27e260c8ba04a6b78a4
+=======
+timestamp: 2018-06-12T22:04:42.750000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "checklist"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_email" CHAR(512),
@@ -138,6 +170,7 @@ CREATE TABLE "checklist"(
     "is_public" CHAR(1)
 );
 success!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 timestamp: 2018-06-11T15:23:11.334101
@@ -200,6 +233,9 @@ timestamp: 2018-06-12T20:26:55.442905
 =======
 timestamp: 2018-06-12T19:57:24.495176
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-12T22:04:42.936000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "track"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "tracklength" CHAR(512),
@@ -211,10 +247,14 @@ CREATE TABLE "track"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-12T20:26:55.449649
 =======
 timestamp: 2018-06-12T19:57:24.499454
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
+=======
+timestamp: 2018-06-12T22:04:43.117000
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 CREATE TABLE "track_data"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "track_id" INTEGER REFERENCES "track" ("id") ON DELETE CASCADE  ,
@@ -224,19 +264,19 @@ CREATE TABLE "track_data"(
 );
 success!
 <<<<<<< HEAD
+<<<<<<< HEAD
 timestamp: 2018-06-12T20:26:55.458210
 =======
 timestamp: 2018-06-12T19:57:24.503306
 >>>>>>> c9211b2da890a401933cdb22c4dd38c8ec34817c
 CREATE TABLE "users_track"(
+=======
+timestamp: 2018-06-12T22:04:43.309000
+CREATE TABLE "liked_track"(
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "tracklength" CHAR(512),
-    "bpm" CHAR(512),
-    "title" CHAR(512),
-    "liked_by" CHAR(512),
-    "num_plays" INTEGER,
-    "created_by" CHAR(512),
-    "created_on" CHAR(512)
+    "liked_title" CHAR(512),
+    "liked_by" CHAR(512)
 );
 success!
 <<<<<<< HEAD

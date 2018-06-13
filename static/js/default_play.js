@@ -12,7 +12,34 @@ var app = function() {
         }
     };
 
+<<<<<<< HEAD
     var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
+=======
+    // Enumerates an array.
+    var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
+
+    self.get_liked_tracks = function(){
+        $.getJSON(get_liked_tracks_url, function (data) {
+            for(var i = 0; i<data.liked_tracks.length; i++){
+                if(data.liked_tracks[i].liked_by == self.vue.current_user.id){
+                    self.vue.liked_tracks.push(data.liked_tracks[i]);
+                }
+            enumerate(self.vue.liked_tracks);
+            }
+        });
+    };
+
+    self.get_current_user = function(){
+      $.getJSON(
+        my_user_url,
+        function(data){
+          console.log(data);
+          self.vue.current_user = data.current_user;
+          self.get_liked_tracks();
+        }
+      );
+    };
+>>>>>>> eb792922042f67b2054de2d5cb22230e56385d09
 
     self.insertion_id = null; // Initialization.
 
@@ -175,6 +202,8 @@ var app = function() {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
+            liked_tracks: [],
+            current_user: null,
 
             play_button: false,
 
@@ -227,6 +256,7 @@ var app = function() {
 
     });
 
+    self.get_current_user();
     self.start();
     $("#vue-div").show();
     return self;

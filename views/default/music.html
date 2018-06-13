@@ -13,7 +13,9 @@
   var get_insertion_id_url = "{{=URL('api', 'get_insertion_id', user_signature=True)}}";
   var cleanup_url = "{{=URL('api', 'cleanup', user_signature=True)}}";
   var add_liked_track_url = "{{=URL('api', 'add_liked_track', user_signature=True)}}";
-  var my_user_url= "{{=URL('api', 'get_current_user')}}"
+  var del_liked_track_url = "{{=URL('api', 'del_liked_track', user_signature=True)}}";
+  var my_user_url= "{{=URL('api', 'get_current_user')}}";
+  var get_liked_tracks_url = "{{=URL('api', 'get_liked_tracks', user_signature=True)}}";
 </script>
 
 <script src="{{=URL('static', 'js/dropzone.js')}}"></script>
@@ -58,15 +60,6 @@ $(function() {
   <div id="vue-div" class="display:none">
     <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
 
-    <!-- Music player -->
-    <div v-if="selected_id >= 0" class="music_controller">
-      <div v-if="selected_url">
-        <audio v-bind:src="selected_url" controls autoplay>
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-    </div>
-
     <!-- Form to add tracks -->
     <div v-if="is_adding_track_info" id="add_track_div">
       <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
@@ -109,28 +102,52 @@ $(function() {
 
     <!-- Code to display the table of tracks -->
     <div class="result_table">
-      <table class="track_table">
+      <div class="track_entry" v-for="track in tracks">
+        <table class="track_table">
         <thead>
         <tr>
           <th></th>
+          <th>Song Title</th>
           <th>Track Length</th>
           <th>BPM</th>
-          <th>Track</th>
-          <th>N Plays</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="track in tracks">
-          <td class="play_selector"><i class="fa" v-on:click="select_track(track._idx)" v-bind:class="{'fa-volume-up': track.id == selected_id, 'fa-volume-off': !(track.id == selected_id)}"></i></td>
+        <tr>
+          <td></td>
+          <td>${track.title}</td>
           <td>${track.tracklength}</td>
           <td>${track.bpm}</td>
-          <td>${track.title}</td>
-          <td>${track.num_plays}</td>
-          <td><i class="fa fa-trash-o" v-on:click="delete_track(track._idx)"></i></td>
         </tr>
         </tbody>
-      </table>
+        </table>
+
+        <td class="play_selector"><i class="fa" v-on:click="select_track(track._idx)" v-bind:class="{'fa-volume-up': track.id == selected_id, 'fa-volume-off': !(track.id == selected_id)}"></i></td>
+
+        <!-- Music player -->
+        <div v-if="selected_id >= 0 && selected_id === track.id" class="music_controller">
+          <div v-if="selected_url">
+            <audio v-bind:src="selected_url" controls autoplay>
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+
+        <div class="button_list">
+          <div class="buttons">
+
+            <!-- TO DO -->
+            <button type="button"><i class="fa fa-play"></i></button>
+            <button type="button" v-if="!is_liked()" v-on:click="like_track(track._idx)"><i class="fa fa-thumbs-o-up"></i></button>
+            <button type="button" v-if="is_liked()"><i class="fa fa-thumbs-up"></i></button>
+            <!-- END TO DO -->
+
+            <button type="button" v-on:click="delete_track(track._idx)"><i class="fa fa-trash-o"></i></button>
+          </div>
+        </div>
+      </div>
+
       <div v-if="has_more" class="show_more">
         <button class="btn btn-default rounded" v-on:click="get_more()">
           <i class="fa fa-ellipsis-h"></i>
