@@ -237,6 +237,30 @@ def add_user_track():
         track_url = build_track_url(t_id)
     )))
 
+@auth.requires_signature()
+def add_liked_track():
+    """Received the metadata for a new track."""
+    # Inserts the track information.
+    t_id = db.liked_track.insert(
+        liked_by = request.vars.liked_by,
+        liked_title = request.vars.title
+    )
+    # Then, updates the uploaded track to point to this track.
+    db(db.track_data.id == request.vars.insertion_id).update(track_id=t_id)
+    # Also, to clean up, remove tracks that do not belong to anyone.
+    db(db.user_track_data.track_id == None).delete()
+    # Returns the track info.  Building the dict should likely be done in
+    # a shared function, but oh well.
+    return response.json(dict(user_track=dict(
+        id = t_id,
+        tracklength = request.vars.tracklength,
+        bpm = request.vars.bpm,
+        title = request.vars.title,
+        liked_by=request.vars.liked_by,
+        num_plays = 0,
+        track_url = build_track_url(t_id)
+    )))
+
 def get_current_user():
     current_firstname=""
     current_lastname=""
