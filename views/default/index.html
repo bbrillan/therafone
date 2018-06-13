@@ -19,13 +19,14 @@
         <!-- Logged In User -->
         {{if auth.user is not None:}}
 
-
-            <div class="audio_test">
-                <audio controls>
-                    <source src="/therafone/static/audio/Heynong_Man.mp3" type="audio/mp3"/>
-                </audio>
+            <h1 class="main_title" style="color: #1b3249">Welcome to Therafone!</h1>
+                <p class="explanation">
+                Press play if you want to try the game!
+                You can upload some music and check out our Music Library.</p>
+            <div class="center">
+                <a href="{{=URL('default', 'play')}}" class="gbutton">PLAY!</a>
+                <a href="{{=URL('default', 'music')}}" class="gbutton">Music Library</a>
             </div>
-
             <!-- Memo List -->
 
 
