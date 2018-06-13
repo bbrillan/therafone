@@ -13,8 +13,8 @@
 
 
 
-            var speed = 60;
-            var duration = 174;
+            var speed = 92;
+            var duration = 417;
         </script>
 
 
@@ -40,7 +40,7 @@
 
                 <div class="dot_space center black">
 
-                    <button class="gbutton" v-on:click="play(60,174)">PLAY</button>
+                    <button class="gbutton" v-on:click="play(62, 417)">PLAY</button>
                     <button class="gbutton" v-on:click="pause()">PAUSE</button>
                     <button class="gbutton" v-on:click="restart()">RESTART</button>
                     <div id="dot" class="dot animated"></div>
@@ -49,8 +49,11 @@
 
 
                 <div class="floor_space">
-
-
+                    <div v-if="is_playing" class="audio_test" style="background: white">
+                        <audio id="song" controls autoplay>
+                                <source src="/therafone/static/audio/Heynong_Man.mp3" type="audio/mp3"/>
+                        </audio>
+                    </div>
 
                     <div class="right">
                         <button class="bbutton" style="background: #b9cfa0" v-on:click="play(speed/3, duration)">EASY</button>
@@ -59,6 +62,10 @@
                     </div>
 
                 </div>
+
+
+
+
             </div>
 
 

@@ -82,6 +82,8 @@ var app = function() {
         self.vue.timerr = 0.0;
         self.bounce();
 
+
+
             var bps = bpm / 60; // setting beats per minute to beats per second
             self.vue.num_beats = bps * duration;
             self.vue.duration = duration;
