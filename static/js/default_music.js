@@ -94,7 +94,6 @@ var app = function() {
                 liked_by: self.vue.current_user.id,
             }
             );
-        }
     };
 
     self.delete_track = function(track_idx) {
@@ -104,7 +103,7 @@ var app = function() {
                 self.vue.tracks.splice(track_idx, 1);
                 enumerate(self.vue.tracks);
             }
-        )
+        );
     };
 
     self.cancel_add_track = function() {
@@ -138,7 +137,7 @@ var app = function() {
           console.log(data);
           self.vue.current_user = data.current_user;
         }
-      )
+      );
     }
 
     self.inc_play_track = function (track_idx) {
@@ -148,7 +147,7 @@ var app = function() {
             inc_plays_url,
             {track_id: track.id},
             function () {}
-        )
+        );
     };
 
 

@@ -46,15 +46,6 @@ db.define_table('track_data',
                 Field('mime_type'),
                 )
 
-db.define_table('users_track',
-                Field('tracklength'),
-                Field('bpm'),
-                Field('title'),
-                Field('liked_by'),
-                Field('num_plays', 'integer'),
-                Field('created_by', default=get_user_email()),
-                Field('created_on', default=datetime.datetime.utcnow()),
-                )
 db.define_table('liked_track',
                 Field('liked_title'),
                 Field('liked_by'),
