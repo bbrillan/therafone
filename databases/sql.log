@@ -1,0 +1,152 @@
+timestamp: 2018-06-11T15:23:11.264639
+CREATE TABLE "web2py_session_therafone"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "locked" CHAR(1),
+    "client_ip" CHAR(64),
+    "created_datetime" TIMESTAMP,
+    "modified_datetime" TIMESTAMP,
+    "unique_key" CHAR(64),
+    "session_data" BLOB
+);
+success!
+timestamp: 2018-06-11T15:23:11.279032
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+success!
+timestamp: 2018-06-11T15:23:11.290130
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2018-06-11T15:23:11.296219
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2018-06-11T15:23:11.302195
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2018-06-11T15:23:11.308502
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2018-06-11T15:23:11.314615
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2018-06-11T15:23:11.324997
+CREATE TABLE "checklist"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_email" CHAR(512),
+    "title" CHAR(512),
+    "memo" TEXT,
+    "updated_on" TIMESTAMP,
+    "is_public" CHAR(1)
+);
+success!
+timestamp: 2018-06-11T15:23:11.334101
+CREATE TABLE "wiki_page"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "slug" CHAR(512),
+    "title" CHAR(255) UNIQUE,
+    "body" TEXT NOT NULL,
+    "tags" TEXT,
+    "can_read" TEXT,
+    "can_edit" TEXT,
+    "changelog" CHAR(512),
+    "html" TEXT,
+    "render" CHAR(512),
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2018-06-11T15:23:11.343929
+CREATE TABLE "wiki_tag"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "wiki_page" INTEGER REFERENCES "wiki_page" ("id") ON DELETE CASCADE  ,
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2018-06-11T15:23:11.350772
+CREATE TABLE "wiki_media"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "wiki_page" INTEGER REFERENCES "wiki_page" ("id") ON DELETE CASCADE  ,
+    "title" CHAR(512),
+    "filename" CHAR(512),
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2018-06-12T20:26:55.442905
+CREATE TABLE "track"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "tracklength" CHAR(512),
+    "bpm" CHAR(512),
+    "title" CHAR(512),
+    "num_plays" INTEGER,
+    "created_by" CHAR(512),
+    "created_on" CHAR(512)
+);
+success!
+timestamp: 2018-06-12T20:26:55.449649
+CREATE TABLE "track_data"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "track_id" INTEGER REFERENCES "track" ("id") ON DELETE CASCADE  ,
+    "original_filename" CHAR(512),
+    "data_blob" BLOB,
+    "mime_type" CHAR(512)
+);
+success!
+timestamp: 2018-06-12T20:26:55.458210
+CREATE TABLE "users_track"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "tracklength" CHAR(512),
+    "bpm" CHAR(512),
+    "title" CHAR(512),
+    "liked_by" CHAR(512),
+    "num_plays" INTEGER,
+    "created_by" CHAR(512),
+    "created_on" CHAR(512)
+);
+success!
