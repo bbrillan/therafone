@@ -39,60 +39,84 @@ var app = function() {
     self.insertion_id = null; // Initialization.
 
 
+    //deals with all the timer functions
     self.bounce = function () {
-        console.log('HI');
+        if (self.vue.is_playing) {
+
+
+            var temparr = [];
+            for (var i = 0; i <= self.vue.num_beats; i+= 1) {   //for every beat
+                var hit = self.vue.speed * i;                          //the time stamp for every beat
+                self.vue.time_stamps[i] = hit;
+            //    console.log("time stamp: " + self.vue.time_stamps[i]);
+            }
+
+            var tempvar = 0;
+            var counter = 0;
+            document.onkeydown = function (event) {
+                    self.vue.timerr = event.timeStamp/1000.0;
+                    tempvar = event.timeStamp/1000.0;
+                    console.log("hit time " + (self.vue.timerr));
+                    temparr[counter] = tempvar;
+                    counter += 1;
+                    console.log("hit time arr: " + temparr);
+            };
+
+        }
+
+
+        if (self.vue.is_playing && self.vue.is_restart) {
+            self.vue.temp = event.timeStamp - event.timeStamp;
+            self.vue.timerr = self.vue.temp + event.timeStamp;
+            console.log(self.vue.temp +"timer" +  self.vue.timerr);
+
+        }
+
+
 
     };
 
 
     self.play = function(bpm, duration) {
         self.vue.is_playing = true;
+        self.vue.timerr = 0.0;
+        self.bounce();
 
-            var bps = bpm / 60;                     // setting beats per minute to beats per second
-            var num_beats = bps * duration;
-
+            var bps = bpm / 60; // setting beats per minute to beats per second
+            self.vue.num_beats = bps * duration;
+            self.vue.duration = duration;
+            self.vue.speed = bps;
 
             var animation = document.getElementsByClassName('animated')[0];
-            animation.style.setProperty("animation-iteration-count", num_beats); // the ball will bounce
-
-            animation.style.setProperty("animation-duration", 1 + "s");
+            animation.style.setProperty("animation-iteration-count", self.vue.num_beats); // the ball will bounce num_beats times
+            animation.style.setProperty("animation-duration", bps + "s");
             self.vue.more_buttons = true;
             animation.classList.add('animated');
             animation.style.animationPlayState = "running";
 
 
 
+
             //setting all the time stamps for the beats throughout the song.
-
-            for (var i = 0; i <= num_beats; i++) {   //for every beat
-                var hit = bps * i;                    //the time stamp for every beat
-                duration -=1;
-                self.vue.time_stamps[i] = hit;
-                //console.log(duration);
-            }
-
-        var start_time = Date.now();
-            var temp = 0;
-        $(document).keypress(function(event){
-            var counter = Date.now()-start_time;
-            console.log(Math.floor(counter/1000.0));
-            var yes = Math.floor(counter/1000.0);
-            temp += 1;
-            self.vue.hits[temp] = yes;
-        });
 
 
     };
 
     self.pause = function() {
-        self.vue.is_playing = true;
+        self.vue.is_playing = false;
         var animation = document.getElementsByClassName('animated')[0];
         self.vue.more_buttons = true;
         animation.style.animationPlayState = "paused";
     };
 
+
     self.restart = function() {
-            self.vue.is_playing = true;
+            self.vue.is_playing = false;
+            self.vue.is_restart = true;
+            self.vue.hits = [];
+            self.vue.time_stamps = [];
+            self.vue.timerr = 0.0;
+            self.play();
             var dot = document.getElementById('dot');
             var animation = document.getElementsByClassName('animated')[0];
             self.vue.more_buttons = false;
@@ -102,9 +126,11 @@ var app = function() {
             dot.classList.add('animated');
     };
 
+
     self.start = function () {
         self.vue.show=true;
         self.vue.more_buttons=false;
+        self.vue.is_playing = false;
         console.log('ok');
 
 
@@ -114,36 +140,7 @@ var app = function() {
         var dot = document.getElementById('dot');
         var animation = document.getElementsByClassName('animated')[0];
 
-
         };
-
-
-        //'pressing play makes the ball bounce'//
-
-/*
-        play.addEventListener('click', function(a) {
-            a.preventDefault();
-            self.vue.more_buttons = true;
-            animation.classList.add('animated');
-            animation.style.animationPlayState = "running";
-        }, false);
-
-
-        pause.addEventListener('click', function(a) {
-            a.preventDefault();
-            self.vue.more_buttons = true;
-            animation.style.animationPlayState = "paused";
-        }, false);
-
-
-        restart.addEventListener('click', function(a) {
-            a.preventDefault();
-            self.vue.more_buttons = false;
-            dot.classList.remove('animated');
-            void dot.offsetWidth;
-            animation.style.animationPlayState = "paused";
-        }, false);
-*/
 
 
         self.select_track = function(track_idx) {
@@ -204,6 +201,8 @@ var app = function() {
 
             speed: 0.0,
             duration: 0.0,
+            num_beats: 0.0,
+            bpm: 0.0,
             show_balls: false, // boolean to display all the trailing balls
             stop_ball: false,
             show: true,
@@ -212,6 +211,7 @@ var app = function() {
             hits: [],
             time_stamps: [],
             percent_hit: 0.0,
+            timerr: 0.0,
 
             plays: document.getElementById('play'),
             pause: document.getElementById('pause'),

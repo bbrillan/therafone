@@ -19,22 +19,6 @@
         <!-- Logged In User -->
         {{if auth.user is not None:}}
 
-            <!-- New Memo -->
-            <div class="memo_new">
-                <!-- Add Button -->
-                <div v-if="!is_adding">
-                    <div class="add_btn">
-                        <a class="btn red rounded" v-on:click="button_new()"><i class="fa fa-plus"></i> Add</a>
-                    </div>
-                </div>
-                <!-- Create Menu -->
-                <div v-if="is_adding">
-                    <button type="button" v-on:click="button_cancel_new()">Cancel</button>
-                    <textarea rows="1" cols="50" v-model="form_title" placeholder="Title"></textarea>
-                    <textarea rows="8" cols="100" v-model="form_content" placeholder="Enter your memo here."></textarea>
-                    <button type="button" v-on:click="button_create_new()">Create</button>
-                </div>
-            </div>
 
             <div class="audio_test">
                 <audio controls>
@@ -43,62 +27,6 @@
             </div>
 
             <!-- Memo List -->
-            <div v-for="memo in memos">
-                <div class="memo" v-if="memo.is_public || memo.user_email == '{{=auth.user.email}}'">
-
-                    <!-- Edit Form -->
-                    <div v-if="is_being_edited">
-                        <!-- Edit Text -->
-                        <div class="edit_text">
-                            <div class="edit_title">
-                                <textarea rows="1" cols="75" v-model="edit_title = memo.title"></textarea>
-                            </div>
-                            <div class="edit_content">
-                                <textarea rows="4" cols="75" v-model="edit_content = memo.memo"></textarea>
-                            </div>
-                        </div>
-                        <!-- Edit Buttons -->
-                        <div>
-                            <div class="button_list">
-                                <div class="buttons">
-                                    <button type="button" v-on:click="button_cancel_edit()">Cancel</button>
-                                    <button type="button" v-on:click="button_save_edit()">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- View Form -->
-                    <div v-if="!is_being_edited">
-                        <!-- View Text -->
-                        <div class="memo_text">
-                            <div class="memo_title">${memo.title}</div>
-                            <div class="memo_content">${memo.memo}</div>
-                        </div>
-                        <!-- View Buttons -->
-                        <div>
-                            {{if auth.user:}}
-                            <div v-if="memo.user_email == '{{=auth.user.email}}'">
-                                <div class="button_list">
-                                    <div class="buttons">
-                                        <a class="btn rounded" v-on:click="button_edit(memo.id)">
-                                            <i class="fa fa-edit fa-lg"></i>
-                                        </a>
-                                        <a class="btn rounded red" v-on:click="button_delete(memo.id)">
-                                            <i class="fa fa-trash fa-lg"></i>
-                                        </a>
-                                        <a class="btn rounded red" v-on:click="toggle_public(memo.id)">
-                                            <i class="fa fa-users" v-if="memo.is_public"></i>
-                                            <i class="fa fa-user" v-if="!memo.is_public"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            {{pass}}
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
 
@@ -106,22 +34,16 @@
         {{else:}}
 
             <!-- Guest Info -->
-            <h1 class="main_title">Welcome!</h1>
-            <p class="explanation">This site will help you organize your life by storing your checklists.
-                Please log in to use it.</p>
-            <div class="login_button">
-                <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
+            <h1 class="main_title" style="color: #1b3249">Welcome to Therafone!</h1>
+                <p class="explanation">
+                This is a Music Therapy Website, press play if you want to try the game!
+                If you Login you can upload some music and check out our Music Library.</p>
+            <div class="center">
+                <a href="{{=URL('default', 'play')}}" class="gbutton">PLAY!</a>
             </div>
 
             <!-- Memo List -->
-            <div v-for="memo in memos">
-                <div class="memo" v-if="memo.is_public">
-                    <div class="memo_text">
-                        <div class="memo_title">${memo.title}</div>
-                        <div class="memo_content">${memo.memo}</div>
-                    </div>
-                </div>
-            </div>
+
         {{pass}}
     </div>
 

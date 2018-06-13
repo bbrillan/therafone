@@ -81,6 +81,20 @@ div.game_container {
 .blue {
     color: blue;
 }
+.red {
+    background: #ca001b;
+}
+.yellow{
+    background: #ffd601;
+}
+.green {
+    background: #048042;
+}
+
+.black {
+  background: black;
+}
+
 
 
 /* Buttons */
@@ -90,6 +104,19 @@ div.game_container {
   text-align: center;
   border: 0;
   padding: 5px 15px;
+  border-radius: 4px;
+  outline: 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bbutton {
+  background: black;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  border: 0;
+  padding: 5px 5px;
   border-radius: 4px;
   outline: 0;
   display: inline-block;
@@ -126,7 +153,7 @@ div.game_container div.dot_space {
 div.game_container div.floor_space {
   height: 98px;
   width: 598px;
-  background-color: #607392;
+  background-color: #000000;
 }
 
 
